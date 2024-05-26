@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  Palette.swift
 //  
 //
 //  Created by Coby Kim on 5/26/24.
