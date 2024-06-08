@@ -7,13 +7,13 @@
 
 import SwiftUI
 
-public enum BaseSize {
-    static let horizantalPadding: CGFloat = 20
-    static let screenWidth: CGFloat = UIScreen.main.bounds.size.width
-    static let screenHeight: CGFloat = UIScreen.main.bounds.size.height
-    static let fullWidth: CGFloat = screenWidth - horizantalPadding * 2
+enum BaseSize {
+    public static let horizantalPadding: CGFloat = 20
+    public static let screenWidth: CGFloat = UIScreen.main.bounds.size.width
+    public static let screenHeight: CGFloat = UIScreen.main.bounds.size.height
+    public static let fullWidth: CGFloat = screenWidth - horizantalPadding * 2
     
-    static var topAreaPadding: CGFloat {
+    public static var topAreaPadding: CGFloat {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
@@ -21,7 +21,7 @@ public enum BaseSize {
         return topPadding
     }
     
-    static var bottomAreaPadding: CGFloat {
+    public static var bottomAreaPadding: CGFloat {
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene
         let window = windowScene?.windows.first
