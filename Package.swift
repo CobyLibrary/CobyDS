@@ -19,7 +19,7 @@ let package = Package(
             name: "CobyDS",
             dependencies: [],
             resources: [
-                .process("Fonts/Files"),
+                .process("Fonts"),
                 .process("Resources/Assets.xcassets")
             ]
         ),
