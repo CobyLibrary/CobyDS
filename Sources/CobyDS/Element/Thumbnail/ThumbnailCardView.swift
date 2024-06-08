@@ -46,7 +46,7 @@ public struct ThumbnailCardView: View {
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(self.title)
-                    .font(.pretendard(size: 22, weight: .bold))
+                    .font(.pretendard(size: 18, weight: .bold))
                     .foregroundColor(Color.white)
                     .lineLimit(1)
                     .truncationMode(.tail)
@@ -64,20 +64,6 @@ public struct ThumbnailCardView: View {
 
 #Preview {
     VStack {
-        ThumbnailCardView(
-            image: Image("rail",  bundle: .module),
-            title: "전주에서",
-            discription: "2020.12.12"
-        )
-        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
-        
-        ThumbnailCardView(
-            image: Image("rail",  bundle: .module),
-            title: "전주에서",
-            discription: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
-        )
-        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
-        
         ThumbnailCardView(
             image: Image("rail",  bundle: .module),
             title: "전주에서",
