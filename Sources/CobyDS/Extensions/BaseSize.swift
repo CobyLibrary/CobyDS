@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  BaseSize.swift
 //  
 //
 //  Created by Coby on 6/9/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum BaseSize {
+public struct BaseSize {
     public static let horizantalPadding: CGFloat = 20
     public static let screenWidth: CGFloat = UIScreen.main.bounds.size.width
     public static let screenHeight: CGFloat = UIScreen.main.bounds.size.height
