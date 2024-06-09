@@ -47,8 +47,8 @@ public struct TopBarView: View {
         self.leftAction = leftAction
         self.title = title
         self.rightSide = rightSide
-        self.rightTitle = leftTitle
-        self.rightIcon = leftIcon
+        self.rightTitle = rightTitle
+        self.rightIcon = rightIcon
         self.rightAction = rightAction
     }
     
@@ -95,7 +95,9 @@ public struct TopBarView: View {
         Group {
             switch contentType {
             case .none:
-                EmptyView()
+                Rectangle()
+                    .fill(Color.white)
+                    .frame(width: 40, height: 40)
             case .text:
                 Text(title)
                     .font(.pretendard(size: 20, weight: .bold))
@@ -116,7 +118,9 @@ public struct TopBarView: View {
                         .foregroundColor(Color.fillNormal)
                         .padding(8)
                 } else {
-                    EmptyView()
+                    Rectangle()
+                        .fill(Color.white)
+                        .frame(width: 40, height: 40)
                 }
             }
         }
@@ -133,6 +137,11 @@ public struct TopBarView: View {
             barType: .underlined,
             leftSide: .left,
             title: "제목"
+        )
+        
+        TopBarView(
+            barType: .underlined,
+            leftSide: .none
         )
     }
 }
