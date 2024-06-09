@@ -96,7 +96,7 @@ public struct TopBarView: View {
             switch contentType {
             case .none:
                 Rectangle()
-                    .fill(Color.white)
+                    .fill(Color.backgroundNormalNormal)
                     .frame(width: 40, height: 40)
             case .text:
                 Text(title)
@@ -119,7 +119,7 @@ public struct TopBarView: View {
                         .padding(8)
                 } else {
                     Rectangle()
-                        .fill(Color.white)
+                        .fill(Color.backgroundNormalNormal)
                         .frame(width: 40, height: 40)
                 }
             }
