@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CBScaleScrollView<Content: View>: View {
+public struct CBScaleScrollView<Content: View>: View {
     
     @Binding var isPresented: Bool
     @Binding var scale: CGFloat
@@ -21,7 +21,7 @@ struct CBScaleScrollView<Content: View>: View {
     
     private let content: Content
     
-    init(
+    public init(
         isPresented: Binding<Bool>,
         scale: Binding<CGFloat>,
         isDown: Binding<Bool>,
@@ -33,7 +33,7 @@ struct CBScaleScrollView<Content: View>: View {
         self.content = content()
     }
     
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             ZStack {
                 self.content
