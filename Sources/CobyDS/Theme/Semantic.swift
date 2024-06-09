@@ -32,40 +32,6 @@ extension Color {
         })
     }
     
-    // Primary
-    public static var primaryNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.blue60)
-            default:
-                return UIColor(self.blue50)
-            }
-        })
-    }
-    
-    public static var primaryStrong: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.blue55)
-            default:
-                return UIColor(self.blue45)
-            }
-        })
-    }
-    
-    public static var primaryHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.blue50)
-            default:
-                return UIColor(self.blue40)
-            }
-        })
-    }
-    
     // Label
     public static var labelNormal: Color {
         return Color(UIColor { traitCollection in
