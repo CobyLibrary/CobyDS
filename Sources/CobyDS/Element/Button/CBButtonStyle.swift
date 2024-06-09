@@ -16,16 +16,16 @@ public struct CBButtonStyle: ButtonStyle {
         case .outlined:
             switch buttonUsage {
             case .primary:
-                return self.disable ? Color.labelDisable : Color.primaryNormal
+                return self.disable ? Color.labelDisable : self.buttonColor
             case .secondary:
-                return self.disable ? Color.labelDisable : Color.primaryNormal
+                return self.disable ? Color.labelDisable : self.buttonColor
             case .assistive:
                 return self.disable ? Color.labelDisable : Color.labelNormal
             }
         case .text:
             switch self.buttonUsage {
             case .primary:
-                return self.disable ? Color.labelDisable : Color.primaryNormal
+                return self.disable ? Color.labelDisable : self.buttonColor
             default:
                 return self.disable ? Color.labelDisable : Color.labelAlternative
             }
@@ -35,7 +35,7 @@ public struct CBButtonStyle: ButtonStyle {
     var backgroundColor: Color {
         switch self.buttonType {
         case .solid:
-            return self.disable ? Color.interactionDisable : Color.primaryNormal
+            return self.disable ? Color.interactionDisable : self.buttonColor
         case .outlined:
             return Color.clear
         case .text:
@@ -50,7 +50,7 @@ public struct CBButtonStyle: ButtonStyle {
         case .outlined:
             switch self.buttonUsage {
             case .primary:
-                return self.disable ? Color.lineNormalNormal : Color.primaryNormal
+                return self.disable ? Color.lineNormalNormal : self.buttonColor
             default:
                 return Color.lineNormalNormal
             }
@@ -64,24 +64,27 @@ public struct CBButtonStyle: ButtonStyle {
         case .assistive:
             return Color.staticBlack.opacity(0.2)
         default:
-            return Color.primaryNormal.opacity(0.2)
+            return self.buttonColor.opacity(0.2)
         }
     }
     
     private let buttonType: CBButtonType
     private let buttonUsage: CBButtonUsage
     private let buttonSize: CBButtonSize
+    private let buttonColor: Color
     private let disable: Bool
     
     public init(
         buttonType: CBButtonType = .solid,
         buttonUsage: CBButtonUsage = .primary,
         buttonSize: CBButtonSize = .large,
+        buttonColor: Color = Color.blueNormal,
         disable: Bool = false
     ) {
         self.buttonType = buttonType
         self.buttonUsage = buttonUsage
         self.buttonSize = buttonSize
+        self.buttonColor = buttonColor
         self.disable = disable
     }
     
