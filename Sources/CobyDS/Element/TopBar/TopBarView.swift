@@ -108,14 +108,14 @@ public struct TopBarView: View {
                 Image("back", bundle: .module)
                     .resizable()
                     .frame(width: 24, height: 24)
-                    .foregroundColor(Color.fillNormal)
+                    .foregroundColor(Color.labelNormal)
                     .padding(8)
             case .icon:
                 if let icon = icon {
                     icon
                         .resizable()
                         .frame(width: 24, height: 24)
-                        .foregroundColor(Color.fillNormal)
+                        .foregroundColor(Color.labelNormal)
                         .padding(8)
                 } else {
                     Rectangle()
@@ -135,13 +135,16 @@ public struct TopBarView: View {
     VStack {
         TopBarView(
             barType: .underlined,
-            leftSide: .left,
+            leftSide: .text,
+            leftTitle: "확인",
             title: "제목"
         )
         
         TopBarView(
             barType: .underlined,
-            leftSide: .none
+            rightSide: .icon,
+            rightIcon: Image("forward", bundle: .module),
+            rightAction: { }
         )
     }
 }
