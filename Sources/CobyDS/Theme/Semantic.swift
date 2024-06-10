@@ -427,6 +427,17 @@ extension Color {
         })
     }
     
+    public static var shadowEmphasize: Color {
+        return Color(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(self.staticWhite.opacity(0.22))
+            default:
+                return UIColor(self.staticBlack.opacity(0.22))
+            }
+        })
+    }
+    
     public static var shadowStrong: Color {
         return Color(UIColor { traitCollection in
             switch traitCollection.userInterfaceStyle {

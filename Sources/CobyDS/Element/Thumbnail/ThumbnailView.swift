@@ -27,18 +27,20 @@ public struct ThumbnailView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: geometry.size.width, height: geometry.size.height)
-                    .clipShape(.rect(cornerRadius: 12))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.lineNormalNeutral, lineWidth: 1)
-                    )
             } else {
                 ThumbnailEmptyView()
             }
         }
+        .clipShape(.rect(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.lineNormalNeutral, lineWidth: self.isShadowing ? 0 : 1)
+        )
         .shadow(
-            color: self.isShadowing ? Color.shadowStrong : Color.clear,
-            radius: 6
+            color: self.isShadowing ? Color.shadowEmphasize : Color.clear,
+            radius: 8,
+            x: 0,
+            y: 2
         )
     }
 }
@@ -49,12 +51,18 @@ public struct ThumbnailView: View {
             image: Image("rail",  bundle: .module),
             isShadowing: true
         )
-            .frame(width: 100, height: 100)
+        .frame(width: 100, height: 100)
         
-        ThumbnailView(image: Image("rail",  bundle: .module))
-            .frame(width: 200, height: 150)
+        ThumbnailView(
+            image: Image("rail",  bundle: .module),
+            isShadowing: true
+        )
+        .frame(width: 200, height: 150)
         
-        ThumbnailView(image: Image("rail",  bundle: .module))
-            .frame(width: 300, height: 150)
+        ThumbnailView(
+            image: Image("rail",  bundle: .module),
+            isShadowing: true
+        )
+        .frame(width: 300, height: 150)
     }
 }

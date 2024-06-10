@@ -28,8 +28,11 @@ public struct ThumbnailTitleView: View {
     
     public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            ThumbnailView(image: self.image, isShadowing: self.isShadowing)
-                .aspectRatio(1.0, contentMode: .fit)
+            ThumbnailView(
+                image: self.image,
+                isShadowing: self.isShadowing
+            )
+            .aspectRatio(1.0, contentMode: .fit)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(self.title)

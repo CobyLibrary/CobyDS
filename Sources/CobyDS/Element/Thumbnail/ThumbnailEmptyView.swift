@@ -8,6 +8,7 @@
 import SwiftUI
 
 public struct ThumbnailEmptyView: View {
+    
     public var body: some View {
         Image("image",  bundle: .module)
             .resizable()
@@ -15,11 +16,6 @@ public struct ThumbnailEmptyView: View {
             .foregroundColor(Color.labelAlternative)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.backgroundNormalAlternative)
-            .clipShape(.rect(cornerRadius: 12))
-            .overlay(
-                RoundedRectangle(cornerRadius: 12)
-                    .stroke(Color.lineNormalNeutral, lineWidth: 1)
-            )
     }
 }
 
