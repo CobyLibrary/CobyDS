@@ -11,38 +11,41 @@ public struct ThumbnailCardView: View {
     
     private let image: Image?
     private let title: String
-    private let discription: String
+    private let description: String
+    private let isShadowing: Bool
     
     public init(
         image: Image? = nil,
         title: String,
-        discription: String
+        description: String,
+        isShadowing: Bool = false
     ) {
         self.image = image
         self.title = title
-        self.discription = discription
+        self.description = description
+        self.isShadowing = isShadowing
     }
     
     public var body: some View {
-        GeometryReader { geometry in
-            ThumbnailView(image: self.image)
-                .overlay(
-                    alignment: .bottom, content: {
-                        ShadowOverlayView()
-                            .frame(width: geometry.size.width, height: geometry.size.height/2)
-                    }
-                )
-                .clipShape(.rect(cornerRadius: 12))
-        }
-    }
-    
-    @ViewBuilder
-    func ShadowOverlayView() -> some View {
         ZStack(alignment: .bottomLeading) {
-            LinearGradient(colors: [
-                Color.clear,
-                Color.black
-            ], startPoint: .top, endPoint: .bottom)
+            ThumbnailView(image: self.image)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            
+            LinearGradient(
+                colors: [
+                    Color.clear,
+                    Color.clear,
+                    Color.clear,
+                    Color.clear,
+                    Color.clear,
+                    Color.black.opacity(0.1),
+                    Color.black.opacity(0.5),
+                    Color.black
+                ],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12))
             
             VStack(alignment: .leading, spacing: 4) {
                 Text(self.title)
@@ -51,14 +54,20 @@ public struct ThumbnailCardView: View {
                     .lineLimit(1)
                     .truncationMode(.tail)
                 
-                Text(self.discription)
+                Text(self.description)
                     .font(.pretendard(size: 14, weight: .medium))
-                    .foregroundColor(Color.neutral95)
+                    .foregroundColor(Color.gray)
                     .lineLimit(1)
                     .truncationMode(.tail)
             }
             .padding(16)
         }
+        .shadow(
+            color: self.isShadowing ? Color.black.opacity(0.25) : Color.clear,
+            radius: 12,
+            x: 0,
+            y: 5
+        )
     }
 }
 
@@ -67,7 +76,15 @@ public struct ThumbnailCardView: View {
         ThumbnailCardView(
             image: Image("rail",  bundle: .module),
             title: "전주에서",
-            discription: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
+            description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
+            isShadowing: true
+        )
+        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
+        
+        ThumbnailCardView(
+            image: Image("rail",  bundle: .module),
+            title: "전주에서",
+            description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
         )
         .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
     }
