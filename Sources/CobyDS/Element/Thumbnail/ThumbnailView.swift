@@ -37,7 +37,7 @@ public struct ThumbnailView: View {
             }
         }
         .shadow(
-            color: self.isShadowing ? Color.shadowHeavy : Color.clear,
+            color: self.isShadowing ? Color.shadowNormal : Color.clear,
             radius: 6
         )
     }

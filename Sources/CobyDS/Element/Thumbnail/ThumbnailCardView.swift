@@ -63,7 +63,7 @@ public struct ThumbnailCardView: View {
             .padding(16)
         }
         .shadow(
-            color: self.isShadowing ? Color.shadowHeavy : Color.clear,
+            color: self.isShadowing ? Color.shadowNormal : Color.clear,
             radius: 12
         )
     }

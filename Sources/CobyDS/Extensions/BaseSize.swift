@@ -12,6 +12,7 @@ public struct BaseSize {
     public static let screenWidth: CGFloat = UIScreen.main.bounds.size.width
     public static let screenHeight: CGFloat = UIScreen.main.bounds.size.height
     public static let fullWidth: CGFloat = screenWidth - horizantalPadding * 2
+    public static let cellWidth: CGFloat = (fullWidth - horizantalPadding) / 2
     
     public static var topAreaPadding: CGFloat {
         let scenes = UIApplication.shared.connectedScenes
