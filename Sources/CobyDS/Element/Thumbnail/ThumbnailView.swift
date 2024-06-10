@@ -37,10 +37,8 @@ public struct ThumbnailView: View {
             }
         }
         .shadow(
-            color: self.isShadowing ? Color.black.opacity(0.25) : Color.clear,
-            radius: 12,
-            x: 0,
-            y: 5
+            color: self.isShadowing ? Color.shadowHeavy : Color.clear,
+            radius: 6
         )
     }
 }

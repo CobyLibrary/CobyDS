@@ -38,9 +38,9 @@ public struct ThumbnailCardView: View {
                     Color.clear,
                     Color.clear,
                     Color.clear,
-                    Color.black.opacity(0.1),
-                    Color.black.opacity(0.5),
-                    Color.black
+                    Color.staticBlack.opacity(0.1),
+                    Color.staticBlack.opacity(0.5),
+                    Color.staticBlack
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -50,23 +50,21 @@ public struct ThumbnailCardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(self.title)
                     .font(.pretendard(size: 18, weight: .bold))
-                    .foregroundColor(Color.white)
+                    .foregroundColor(Color.staticWhite)
                     .lineLimit(1)
                     .truncationMode(.tail)
                 
                 Text(self.description)
                     .font(.pretendard(size: 14, weight: .medium))
-                    .foregroundColor(Color.gray)
+                    .foregroundColor(Color.staticWhite.opacity(0.5))
                     .lineLimit(1)
                     .truncationMode(.tail)
             }
             .padding(16)
         }
         .shadow(
-            color: self.isShadowing ? Color.black.opacity(0.25) : Color.clear,
-            radius: 12,
-            x: 0,
-            y: 5
+            color: self.isShadowing ? Color.shadowHeavy : Color.clear,
+            radius: 12
         )
     }
 }

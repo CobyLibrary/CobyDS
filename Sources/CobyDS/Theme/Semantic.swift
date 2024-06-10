@@ -414,4 +414,38 @@ extension Color {
             }
         })
     }
+    
+    // Shadow
+    public static var shadowNormal: Color {
+        return Color(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(self.staticWhite.opacity(0.16))
+            default:
+                return UIColor(self.staticBlack.opacity(0.16))
+            }
+        })
+    }
+    
+    public static var shadowStrong: Color {
+        return Color(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(self.staticWhite.opacity(0.22))
+            default:
+                return UIColor(self.staticBlack.opacity(0.22))
+            }
+        })
+    }
+    
+    public static var shadowHeavy: Color {
+        return Color(UIColor { traitCollection in
+            switch traitCollection.userInterfaceStyle {
+            case .dark:
+                return UIColor(self.staticWhite.opacity(0.28))
+            default:
+                return UIColor(self.staticBlack.opacity(0.28))
+            }
+        })
+    }
 }
