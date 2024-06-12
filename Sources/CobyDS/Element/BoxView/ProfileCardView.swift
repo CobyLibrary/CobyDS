@@ -33,7 +33,7 @@ public struct ProfileCardView: View {
                             .stroke(Color.lineNormalNeutral, lineWidth: 1)
                     )
             } else {
-                Image(uiImage: UIImage.person)
+                Image(uiImage: UIImage.icPerson)
                     .resizable()
                     .frame(width: 32, height: 32)
                     .foregroundColor(Color.labelAlternative)
@@ -60,7 +60,7 @@ public struct ProfileCardView: View {
 #Preview {
     VStack {
         ProfileCardView(
-            image: UIImage.person,
+            image: UIImage.icPerson,
             name: "사용자"
         )
         

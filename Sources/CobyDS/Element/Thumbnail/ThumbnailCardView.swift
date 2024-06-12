@@ -74,7 +74,7 @@ public struct ThumbnailCardView: View {
 #Preview {
     VStack {
         ThumbnailCardView(
-            image: UIImage.image,
+            image: UIImage.icImage,
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
             isShadowing: true
@@ -82,7 +82,7 @@ public struct ThumbnailCardView: View {
         .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
         
         ThumbnailCardView(
-            image: UIImage.image,
+            image: UIImage.icImage,
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
         )

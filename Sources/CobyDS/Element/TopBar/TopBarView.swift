@@ -105,7 +105,7 @@ public struct TopBarView: View {
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
             case .left:
-                Image(uiImage: UIImage.back)
+                Image(uiImage: UIImage.icBack)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color.labelNormal)
@@ -143,7 +143,7 @@ public struct TopBarView: View {
         TopBarView(
             barType: .underlined,
             rightSide: .icon,
-            rightIcon: UIImage.forward,
+            rightIcon: UIImage.icForward,
             rightAction: { }
         )
     }

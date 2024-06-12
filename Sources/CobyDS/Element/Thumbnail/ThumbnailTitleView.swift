@@ -54,7 +54,7 @@ public struct ThumbnailTitleView: View {
 #Preview {
     VStack(spacing: 20) {
         ThumbnailTitleView(
-            image: UIImage.image,
+            image: UIImage.icImage,
             title: "제목입니다만",
             description: "사진에 대한 설명이에요",
             isShadowing: true

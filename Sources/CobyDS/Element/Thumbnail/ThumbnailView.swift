@@ -49,19 +49,19 @@ public struct ThumbnailView: View {
 #Preview {
     VStack {
         ThumbnailView(
-            image: UIImage.image,
+            image: UIImage.icImage,
             isShadowing: true
         )
         .frame(width: 100, height: 100)
         
         ThumbnailView(
-            image: UIImage.image,
+            image: UIImage.icImage,
             isShadowing: true
         )
         .frame(width: 200, height: 150)
         
         ThumbnailView(
-            image: UIImage.image,
+            image: UIImage.icImage,
             isShadowing: true
         )
         .frame(width: 300, height: 150)

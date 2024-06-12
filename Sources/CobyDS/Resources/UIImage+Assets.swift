@@ -14,22 +14,22 @@ extension UIImage {
     }
     
     // On & Off
-    public static let checkOff = UIImage(name: "check_off")!
-    public static let checkOn = UIImage(name: "check_on")!
-    public static let checkboxOff = UIImage(name: "checkbox_off")!
-    public static let checkboxOn = UIImage(name: "checkbox_on")!
-    public static let radioOff = UIImage(name: "radio_off")!
-    public static let radioOn = UIImage(name: "radio_on")!
-    public static let visibilityOff = UIImage(name: "visibility_off")!
-    public static let visibilityOn = UIImage(name: "visibility_on")!
+    public static let icCheckOff = UIImage(name: "check_off")!
+    public static let icCheckOn = UIImage(name: "check_on")!
+    public static let icCheckboxOff = UIImage(name: "checkbox_off")!
+    public static let icCheckboxOn = UIImage(name: "checkbox_on")!
+    public static let icRadioOff = UIImage(name: "radio_off")!
+    public static let icRadioOn = UIImage(name: "radio_on")!
+    public static let icVisibilityOff = UIImage(name: "visibility_off")!
+    public static let icVisibilityOn = UIImage(name: "visibility_on")!
     
     // Icon
-    public static let back = UIImage(name: "back")!
-    public static let forward = UIImage(name: "forward")!
-    public static let cancel = UIImage(name: "cancel")!
-    public static let search = UIImage(name: "search")!
-    public static let person = UIImage(name: "person")!
-    public static let image = UIImage(name: "image")!
+    public static let icBack = UIImage(name: "back")!
+    public static let icForward = UIImage(name: "forward")!
+    public static let icCancel = UIImage(name: "cancel")!
+    public static let icSearch = UIImage(name: "search")!
+    public static let icPerson = UIImage(name: "person")!
+    public static let icImage = UIImage(name: "image")!
 }
 
 public extension UIImage {

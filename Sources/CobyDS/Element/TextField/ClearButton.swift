@@ -19,7 +19,7 @@ public struct ClearButton: ViewModifier {
                 Button {
                     text = ""
                 } label: {
-                    Image(uiImage: UIImage.cancel)
+                    Image(uiImage: UIImage.icCancel)
                         .resizable()
                         .frame(width: 20, height: 20)
                         .foregroundColor(Color.labelAssistive)
