@@ -24,6 +24,14 @@ public struct ProfileCardView: View {
         HStack(spacing: 16) {
             if let image = self.image {
                 Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 64, height: 64)
+                    .clipShape(Circle())
+                    .overlay(
+                        Circle()
+                            .stroke(Color.lineNormalNeutral, lineWidth: 1)
+                    )
             } else {
                 Image(uiImage: UIImage.person)
                     .resizable()
@@ -50,10 +58,17 @@ public struct ProfileCardView: View {
 }
 
 #Preview {
-    ProfileCardView(
-        image: nil, 
-        name: "사용자"
-    )
+    VStack {
+        ProfileCardView(
+            image: UIImage.person,
+            name: "사용자"
+        )
+        
+        ProfileCardView(
+            image: nil,
+            name: "사용자"
+        )
+    }
     .loadCustomFonts()
 }
 
