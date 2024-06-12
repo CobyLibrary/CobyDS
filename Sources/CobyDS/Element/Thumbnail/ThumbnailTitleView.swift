@@ -9,13 +9,13 @@ import SwiftUI
 
 public struct ThumbnailTitleView: View {
     
-    private let image: Image?
+    private let image: UIImage?
     private let title: String
     private let description: String
     private let isShadowing: Bool
     
     public init(
-        image: Image? = nil,
+        image: UIImage? = nil,
         title: String,
         description: String,
         isShadowing: Bool = false
@@ -54,7 +54,7 @@ public struct ThumbnailTitleView: View {
 #Preview {
     VStack(spacing: 20) {
         ThumbnailTitleView(
-            image: Image("rail",  bundle: .module),
+            image: UIImage.image,
             title: "제목입니다만",
             description: "사진에 대한 설명이에요",
             isShadowing: true

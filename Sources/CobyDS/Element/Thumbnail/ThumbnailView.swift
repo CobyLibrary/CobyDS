@@ -9,11 +9,11 @@ import SwiftUI
 
 public struct ThumbnailView: View {
     
-    private let image: Image?
+    private let image: UIImage?
     private let isShadowing: Bool
     
     public init(
-        image: Image? = nil,
+        image: UIImage? = nil,
         isShadowing: Bool = false
     ) {
         self.image = image
@@ -23,7 +23,7 @@ public struct ThumbnailView: View {
     public var body: some View {
         GeometryReader { geometry in
             if let image = self.image {
-                image
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                     .frame(width: geometry.size.width, height: geometry.size.height)
@@ -31,6 +31,7 @@ public struct ThumbnailView: View {
                 ThumbnailEmptyView()
             }
         }
+        .background(Color.backgroundNormalNormal)
         .clipShape(.rect(cornerRadius: 12))
         .overlay(
             RoundedRectangle(cornerRadius: 12)
@@ -48,19 +49,19 @@ public struct ThumbnailView: View {
 #Preview {
     VStack {
         ThumbnailView(
-            image: Image("rail",  bundle: .module),
+            image: UIImage.image,
             isShadowing: true
         )
         .frame(width: 100, height: 100)
         
         ThumbnailView(
-            image: Image("rail",  bundle: .module),
+            image: UIImage.image,
             isShadowing: true
         )
         .frame(width: 200, height: 150)
         
         ThumbnailView(
-            image: Image("rail",  bundle: .module),
+            image: UIImage.image,
             isShadowing: true
         )
         .frame(width: 300, height: 150)

@@ -20,24 +20,24 @@ public struct TopBarView: View {
     private let barType: BarType
     private let leftSide: ContentType
     private let leftTitle: String
-    private let leftIcon: Image?
+    private let leftIcon: UIImage?
     private let leftAction: () -> Void
     private let title: String
     private let rightSide: ContentType
     private let rightTitle: String
-    private let rightIcon: Image?
+    private let rightIcon: UIImage?
     private let rightAction: () -> Void
     
     public init(
         barType: BarType = .filled,
         leftSide: ContentType = .left,
         leftTitle: String = "",
-        leftIcon: Image? = nil,
+        leftIcon: UIImage? = nil,
         leftAction: @escaping () -> Void = {},
         title: String = "",
         rightSide: ContentType = .none,
         rightTitle: String = "",
-        rightIcon: Image? = nil,
+        rightIcon: UIImage? = nil,
         rightAction: @escaping () -> Void = {}
     ) {
         self.barType = barType
@@ -89,7 +89,7 @@ public struct TopBarView: View {
     func BarContentView(
         contentType: ContentType,
         title: String = "",
-        icon: Image? = nil,
+        icon: UIImage? = nil,
         action: @escaping () -> Void = {}
     ) -> some View {
         Group {
@@ -105,14 +105,14 @@ public struct TopBarView: View {
                     .padding(.horizontal, 16)
                     .padding(.vertical, 8)
             case .left:
-                Image("back", bundle: .module)
+                Image(uiImage: UIImage.back)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color.labelNormal)
                     .padding(8)
             case .icon:
                 if let icon = icon {
-                    icon
+                    Image(uiImage: icon)
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color.labelNormal)
@@ -143,7 +143,7 @@ public struct TopBarView: View {
         TopBarView(
             barType: .underlined,
             rightSide: .icon,
-            rightIcon: Image("forward", bundle: .module),
+            rightIcon: UIImage.forward,
             rightAction: { }
         )
     }

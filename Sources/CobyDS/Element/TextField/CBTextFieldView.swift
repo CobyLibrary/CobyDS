@@ -153,7 +153,7 @@ public struct CBTextFieldView: View {
         case .none:
             EmptyView()
         case .visibillity:
-            Image(self.isSecure ? "visibility_off" : "visibility_on", bundle: .module)
+            Image(uiImage: self.isSecure ? UIImage.visibilityOff : UIImage.visibilityOn)
                 .resizable()
                 .frame(width: 24, height: 24)
                 .foregroundColor(Color.labelAlternative)
@@ -161,7 +161,7 @@ public struct CBTextFieldView: View {
                     self.isSecure.toggle()
                 }
         case .search:
-            Image("search", bundle: .module)
+            Image(uiImage: UIImage.search)
                 .resizable()
                 .frame(width: 24, height: 24)
                 .foregroundColor(Color.labelAlternative)

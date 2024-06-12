@@ -10,7 +10,7 @@ import SwiftUI
 public struct ThumbnailEmptyView: View {
     
     public var body: some View {
-        Image("image",  bundle: .module)
+        Image(uiImage: UIImage.image)
             .resizable()
             .frame(width: 64, height: 64)
             .foregroundColor(Color.labelAlternative)

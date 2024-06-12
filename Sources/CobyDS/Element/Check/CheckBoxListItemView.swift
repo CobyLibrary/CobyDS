@@ -23,7 +23,7 @@ public struct CheckBoxListItemView: View {
     
     public var body: some View {
         HStack(spacing: 4) {
-            Image(self.isChecked ? "checkbox_on" : "checkbox_off",  bundle: .module)
+            Image(uiImage: self.isChecked ? UIImage.checkboxOn : UIImage.checkboxOff)
             
             Text(self.title)
                 .font(.pretendard(size: 16, weight: .regular))

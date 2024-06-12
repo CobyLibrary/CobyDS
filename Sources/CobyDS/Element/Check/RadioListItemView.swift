@@ -22,7 +22,7 @@ public struct RadioListItemView: View {
     
     public var body: some View {
         HStack(spacing: 4) {
-            Image(self.isChecked ? "radio_on" : "radio_off",  bundle: .module)
+            Image(uiImage: self.isChecked ? UIImage.radioOn : UIImage.radioOff)
             
             Text(self.title)
                 .font(.pretendard(size: 16, weight: .medium))
