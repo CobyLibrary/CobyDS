@@ -42,7 +42,7 @@ public enum TextFieldState {
         }
     }
     
-    public func backgroudColor(isFilled: Bool) -> Color {
+    public func backgroudColor(isFilled: Bool = false) -> Color {
         if isFilled {
             switch self {
             case .enabled, .error, .focused:
