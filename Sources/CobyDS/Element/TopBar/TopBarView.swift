@@ -10,7 +10,7 @@ import SwiftUI
 public struct TopBarView: View {
     
     public enum ContentType {
-        case none, text, left, icon
+        case none, title, text, left, icon
     }
     
     public enum BarType {
@@ -103,6 +103,11 @@ public struct TopBarView: View {
                 Rectangle()
                     .fill(Color.backgroundNormalNormal)
                     .frame(width: 40, height: 40)
+            case .title:
+                Text(title)
+                    .font(.pretendard(size: 20, weight: .bold))
+                    .foregroundColor(Color.labelNormal)
+                    .padding(.horizontal, BaseSize.horizantalPadding)
             case .text:
                 Text(title)
                     .font(.pretendard(size: 16, weight: .medium))
@@ -152,7 +157,7 @@ public struct TopBarView: View {
         
         TopBarView(
             barType: .underlined,
-            leftSide: .text,
+            leftSide: .title,
             leftTitle: "확인",
             title: "제목",
             rightSide: .icon,
