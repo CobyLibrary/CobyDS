@@ -54,34 +54,39 @@ public struct TopBarView: View {
     
     public var body: some View {
         HStack {
-            BarContentView(
-                contentType: self.leftSide,
-                title: self.leftTitle,
-                icon: self.leftIcon,
-                action: self.leftAction
-            )
+            HStack {
+                BarContentView(
+                    contentType: self.leftSide,
+                    title: self.leftTitle,
+                    icon: self.leftIcon,
+                    action: self.leftAction
+                )
+                
+                Spacer()
+            }
             
-            Spacer()
-            
-            BarContentView(
-                contentType: self.rightSide,
-                title: self.rightTitle,
-                icon: self.rightIcon,
-                action: self.rightAction
-            )
-        }
-        .background(barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
-        .overlay(
-            Rectangle()
-                .frame(height: 1)
-                .foregroundColor(barType == .underlined ? Color.lineNormalNormal : Color.clear)
-            , alignment: .bottom
-        )
-        .overlay(
             Text(self.title)
                 .font(.pretendard(size: 18, weight: .bold))
                 .foregroundColor(Color.labelNormal)
-            , alignment: .center
+            
+            HStack {
+                Spacer()
+                
+                BarContentView(
+                    contentType: self.rightSide,
+                    title: self.rightTitle,
+                    icon: self.rightIcon,
+                    action: self.rightAction
+                )
+            }
+        }
+        .frame(height: 56)
+        .background(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
+        .overlay(
+            Rectangle()
+                .frame(height: 1)
+                .foregroundColor(self.barType == .underlined ? Color.lineNormalNormal : Color.clear)
+            , alignment: .bottom
         )
     }
     
@@ -100,23 +105,22 @@ public struct TopBarView: View {
                     .frame(width: 40, height: 40)
             case .text:
                 Text(title)
-                    .font(.pretendard(size: 20, weight: .bold))
+                    .font(.pretendard(size: 16, weight: .medium))
                     .foregroundColor(Color.labelNormal)
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 8)
+                    .padding(.horizontal, BaseSize.horizantalPadding)
             case .left:
                 Image(uiImage: UIImage.icBack)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color.labelNormal)
-                    .padding(8)
+                    .padding(.horizontal, 16)
             case .icon:
                 if let icon = icon {
                     Image(uiImage: icon)
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color.labelNormal)
-                        .padding(8)
+                        .padding(.horizontal, 16)
                 } else {
                     Rectangle()
                         .fill(Color.backgroundNormalNormal)
@@ -124,7 +128,6 @@ public struct TopBarView: View {
                 }
             }
         }
-        .padding(8)
         .onTapGesture {
             action()
         }
@@ -146,5 +149,34 @@ public struct TopBarView: View {
             rightIcon: UIImage.icForward,
             rightAction: { }
         )
+        
+        TopBarView(
+            barType: .underlined,
+            leftSide: .text,
+            leftTitle: "확인",
+            title: "제목",
+            rightSide: .icon,
+            rightIcon: UIImage.icForward,
+            rightAction: { }
+        )
+        
+        TopBarView(
+            barType: .underlined,
+            leftSide: .text,
+            leftTitle: "확인",
+            rightSide: .text,
+            rightTitle: "확인",
+            rightAction: { }
+        )
+        
+        TopBarView(
+            barType: .underlined
+        )
+        
+        TopBarView(
+            barType: .underlined,
+            leftSide: .none
+        )
     }
+    .loadCustomFonts()
 }
