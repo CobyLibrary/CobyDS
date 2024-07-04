@@ -31,7 +31,7 @@ public struct ThumbnailView: View {
                 ThumbnailEmptyView()
             }
         }
-        .background(Color.backgroundNormalNormal)
+        .background(Color.fillStrong)
         .clipShape(.rect(cornerRadius: 12))
         .contentShape(Rectangle())
         .overlay(
