@@ -2,13 +2,19 @@ import SwiftUI
 
 public struct ThumbnailView: View {
     
+    private let imageWidth: CGFloat
+    private let imageHeight: CGFloat
     private let image: UIImage?
     private let isShadowing: Bool
     
     public init(
+        imageWidth: CGFloat,
+        imageHeight: CGFloat,
         image: UIImage? = nil,
         isShadowing: Bool = false
     ) {
+        self.imageWidth = imageWidth
+        self.imageHeight = imageHeight
         self.image = image
         self.isShadowing = isShadowing
     }
@@ -18,6 +24,7 @@ public struct ThumbnailView: View {
             Image(uiImage: image)
                 .resizable()
                 .scaledToFill()
+                .frame(width: self.imageWidth, height: self.imageHeight)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
@@ -31,6 +38,7 @@ public struct ThumbnailView: View {
                 )
         } else {
             ThumbnailEmptyView()
+                .frame(width: self.imageWidth, height: self.imageHeight)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
                 .overlay(
                     RoundedRectangle(cornerRadius: 12)
@@ -49,21 +57,24 @@ public struct ThumbnailView: View {
 #Preview {
     VStack {
         ThumbnailView(
+            imageWidth: 100,
+            imageHeight: 100,
             image: UIImage(named: "icImage"),
             isShadowing: true
         )
-        .frame(width: 100, height: 100)
         
         ThumbnailView(
+            imageWidth: 200,
+            imageHeight: 100,
             image: UIImage(named: "icImage"),
             isShadowing: true
         )
-        .frame(width: 200, height: 150)
         
         ThumbnailView(
+            imageWidth: 300,
+            imageHeight: 100,
             image: UIImage(named: "icImage"),
             isShadowing: true
         )
-        .frame(width: 300, height: 150)
     }
 }

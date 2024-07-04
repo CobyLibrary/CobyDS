@@ -29,10 +29,11 @@ public struct ThumbnailTitleView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ThumbnailView(
+                imageWidth: BaseSize.cellWidth,
+                imageHeight: BaseSize.cellWidth,
                 image: self.image,
                 isShadowing: self.isShadowing
             )
-            .aspectRatio(1.0, contentMode: .fit)
             
             VStack(alignment: .leading, spacing: 2) {
                 Text(self.title)
@@ -48,6 +49,7 @@ public struct ThumbnailTitleView: View {
                     .truncationMode(.tail)
             }
         }
+        .frame(width: BaseSize.cellWidth)
     }
 }
 
@@ -59,13 +61,11 @@ public struct ThumbnailTitleView: View {
             description: "사진에 대한 설명이에요",
             isShadowing: true
         )
-        .frame(width: 150)
         
         ThumbnailTitleView(
             title: "제목입니다만",
             description: "설명잉에요"
         )
-        .frame(width: 150)
     }
     .loadCustomFonts()
 }

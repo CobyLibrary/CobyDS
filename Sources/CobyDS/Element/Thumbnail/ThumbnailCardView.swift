@@ -28,7 +28,11 @@ public struct ThumbnailCardView: View {
     
     public var body: some View {
         ZStack(alignment: .bottomLeading) {
-            ThumbnailView(image: self.image)
+            ThumbnailView(
+                imageWidth: BaseSize.fullWidth,
+                imageHeight: BaseSize.fullWidth * 0.8,
+                image: self.image
+            )
             
             LinearGradient(
                 colors: [
@@ -67,25 +71,26 @@ public struct ThumbnailCardView: View {
             x: 0,
             y: 2
         )
+        .frame(width: BaseSize.fullWidth, height:  BaseSize.fullWidth*0.8)
     }
 }
 
 #Preview {
-    VStack {
-        ThumbnailCardView(
-            image: UIImage.icImage,
-            title: "전주에서",
-            description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
-            isShadowing: true
-        )
-        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
-        
-        ThumbnailCardView(
-            image: UIImage.icImage,
-            title: "전주에서",
-            description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
-        )
-        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
+    ScrollView {
+        VStack {
+            ThumbnailCardView(
+                image: UIImage.icImage,
+                title: "전주에서",
+                description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
+                isShadowing: true
+            )
+            
+            ThumbnailCardView(
+                image: UIImage.icImage,
+                title: "전주에서",
+                description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
+            )
+        }
     }
     .loadCustomFonts()
 }
