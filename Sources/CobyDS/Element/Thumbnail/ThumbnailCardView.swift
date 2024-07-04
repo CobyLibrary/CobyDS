@@ -29,7 +29,6 @@ public struct ThumbnailCardView: View {
     public var body: some View {
         ZStack(alignment: .bottomLeading) {
             ThumbnailView(image: self.image)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
             
             LinearGradient(
                 colors: [
