@@ -33,6 +33,7 @@ public struct ThumbnailView: View {
         }
         .background(Color.backgroundNormalNormal)
         .clipShape(.rect(cornerRadius: 12))
+        .contentShape(Rectangle())
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.lineNormalNeutral, lineWidth: self.isShadowing ? 0 : 1)
