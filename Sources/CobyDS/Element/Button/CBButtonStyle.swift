@@ -12,22 +12,22 @@ public struct CBButtonStyle: ButtonStyle {
     var foregroundColor: Color {
         switch self.buttonType {
         case .solid:
-            return self.disable ? Color.labelAssistive : Color.staticWhite
+            return self.isDisabled ? Color.labelAssistive : Color.staticWhite
         case .outlined:
             switch buttonUsage {
             case .primary:
-                return self.disable ? Color.labelDisable : self.buttonColor
+                return self.isDisabled ? Color.labelDisable : self.buttonColor
             case .secondary:
-                return self.disable ? Color.labelDisable : self.buttonColor
+                return self.isDisabled ? Color.labelDisable : self.buttonColor
             case .assistive:
-                return self.disable ? Color.labelDisable : Color.labelNormal
+                return self.isDisabled ? Color.labelDisable : Color.labelNormal
             }
         case .text:
             switch self.buttonUsage {
             case .primary:
-                return self.disable ? Color.labelDisable : self.buttonColor
+                return self.isDisabled ? Color.labelDisable : self.buttonColor
             default:
-                return self.disable ? Color.labelDisable : Color.labelAlternative
+                return self.isDisabled ? Color.labelDisable : Color.labelAlternative
             }
         }
     }
@@ -35,7 +35,7 @@ public struct CBButtonStyle: ButtonStyle {
     var backgroundColor: Color {
         switch self.buttonType {
         case .solid:
-            return self.disable ? Color.interactionDisable : self.buttonColor
+            return self.isDisabled ? Color.interactionDisable : self.buttonColor
         case .outlined:
             return Color.clear
         case .text:
@@ -50,7 +50,7 @@ public struct CBButtonStyle: ButtonStyle {
         case .outlined:
             switch self.buttonUsage {
             case .primary:
-                return self.disable ? Color.lineNormalNormal : self.buttonColor
+                return self.isDisabled ? Color.lineNormalNormal : self.buttonColor
             default:
                 return Color.lineNormalNormal
             }
@@ -68,24 +68,27 @@ public struct CBButtonStyle: ButtonStyle {
         }
     }
     
+    private let isDisabled: Bool
+    private let isBlur: Bool
     private let buttonType: CBButtonType
     private let buttonUsage: CBButtonUsage
     private let buttonSize: CBButtonSize
     private let buttonColor: Color
-    private let disable: Bool
     
     public init(
+        isDisabled: Bool = false,
+        isBlur: Bool = false,
         buttonType: CBButtonType = .solid,
         buttonUsage: CBButtonUsage = .primary,
         buttonSize: CBButtonSize = .large,
-        buttonColor: Color = Color.blueNormal,
-        disable: Bool = false
+        buttonColor: Color = Color.blueNormal
     ) {
+        self.isDisabled = isDisabled
+        self.isBlur = isBlur
         self.buttonType = buttonType
         self.buttonUsage = buttonUsage
         self.buttonSize = buttonSize
         self.buttonColor = buttonColor
-        self.disable = disable
     }
     
     public func makeBody(configuration: Self.Configuration) -> some View {
@@ -94,32 +97,35 @@ public struct CBButtonStyle: ButtonStyle {
             .foregroundColor(self.foregroundColor)
             .frame(maxWidth: .infinity, minHeight: self.buttonSize.buttonHeight)
             .background(backgroundColor.cornerRadius(10))
+            .shadow(color: self.isBlur ? Color.white : Color.clear, radius: 24.0, x: 0.0, y: -12.0)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
                     .strokeBorder(self.borderColor, lineWidth: 1)
             )
             .overlay(
-                (configuration.isPressed && !self.disable ? self.pressedColor : Color.clear)
+                (configuration.isPressed && !self.isDisabled ? self.pressedColor : Color.clear)
                     .cornerRadius(10)
             )
     }
 }
 
 #Preview {
-    VStack {
-        Button {
-            print("Clicked")
-        } label: {
-            Text("버튼 테스트")
-        }
-        .buttonStyle(CBButtonStyle())
+    VStack(spacing: 50) {
+        Spacer()
         
         Button {
             print("Clicked")
         } label: {
             Text("버튼 테스트")
         }
-        .buttonStyle(CBButtonStyle(disable: true))
+        .buttonStyle(CBButtonStyle(isBlur: true))
+        
+        Button {
+            print("Clicked")
+        } label: {
+            Text("버튼 테스트")
+        }
+        .buttonStyle(CBButtonStyle(isDisabled: true))
         
         Button {
             print("Clicked")
@@ -134,6 +140,9 @@ public struct CBButtonStyle: ButtonStyle {
             Text("버튼 테스트")
         }
         .buttonStyle(CBButtonStyle(buttonType: .text))
+        
+        Spacer()
     }
+    .background(Color.green30)
     .loadCustomFonts()
 }
