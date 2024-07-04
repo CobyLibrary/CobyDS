@@ -15,7 +15,7 @@ public struct ThumbnailEmptyView: View {
             .frame(width: 64, height: 64)
             .foregroundColor(Color.labelAlternative)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.backgroundNormalAlternative)
+            .background(Color.fillStrong)
     }
 }
 
