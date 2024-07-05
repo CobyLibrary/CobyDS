@@ -50,9 +50,6 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                 .frame(maxWidth: .infinity)
                 .contentShape(Rectangle())
                 .background(Color.backgroundNormalNormal)
-                .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
-                .scaleEffect(self.scale)
-                .ignoresSafeArea()
                 .offset(y: self.offset + self.dragOffset)
                 .background(
                     GeometryReader { innerGeometry in
@@ -79,6 +76,9 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                     self.header
                 }
             )
+            .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
+            .scaleEffect(self.scale)
+            .ignoresSafeArea()
         }
     }
     
