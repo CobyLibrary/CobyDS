@@ -38,36 +38,39 @@ public struct CBScaleScrollView<Content: View>: View {
             Color.backgroundNormalAlternative
                 .edgesIgnoringSafeArea(.all)
             
-            GeometryReader { geometry in
-                VStack {
-                    self.content
-                    
-                    Spacer()
-                }
-                .contentShape(Rectangle())
-                .background(Color.backgroundNormalNormal)
-                .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
-                .scaleEffect(self.scale)
-                .ignoresSafeArea()
-                .offset(y: self.offset + self.dragOffset)
-                .background(
-                    GeometryReader { innerGeometry in
-                        Color.clear
-                            .onAppear {
-                                self.contentHeight = innerGeometry.size.height
-                                self.maxOffset = min(geometry.size.height - self.contentHeight, 0)
-                            }
+            ZStack {
+                GeometryReader { geometry in
+                    VStack {
+                        self.content
+                        
+                        Spacer()
                     }
-                )
-                .gesture(
-                    DragGesture()
-                        .onChanged { value in
-                            self.handleDragChanged(value, geometry: geometry)
+                    .frame(maxWidth: .infinity)
+                    .contentShape(Rectangle())
+                    .background(Color.backgroundNormalNormal)
+                    .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
+                    .scaleEffect(self.scale)
+                    .ignoresSafeArea()
+                    .offset(y: self.offset + self.dragOffset)
+                    .background(
+                        GeometryReader { innerGeometry in
+                            Color.clear
+                                .onAppear {
+                                    self.contentHeight = innerGeometry.size.height
+                                    self.maxOffset = min(geometry.size.height - self.contentHeight, 0)
+                                }
                         }
-                        .onEnded { value in
-                            self.handleDragEnded(value)
-                        }
-                )
+                    )
+                    .gesture(
+                        DragGesture()
+                            .onChanged { value in
+                                self.handleDragChanged(value, geometry: geometry)
+                            }
+                            .onEnded { value in
+                                self.handleDragEnded(value)
+                            }
+                    )
+                }
             }
         }
     }
@@ -122,4 +125,33 @@ public struct CBScaleScrollView<Content: View>: View {
         
         self.isDown = self.offset - BaseSize.topAreaPadding - 10 < -BaseSize.screenWidth * 1.2
     }
+}
+
+#Preview {
+    struct PreviewWrapper: View {
+        @State var isPresented: Bool = true
+        @State var scale: CGFloat = 1.0
+        @State var isDown: Bool = true
+        
+        var body: some View {
+            CBScaleScrollView(
+                isPresented: $isPresented,
+                scale: $scale,
+                isDown: $isDown
+            ) {
+                VStack {
+                    Text("123")
+                    Text("123")
+                    Text("123")
+                    Text("123")
+                    Text("123")
+                    Text("123")
+                    Text("123")
+                }
+                .frame(maxWidth: .infinity)
+                .background(Color.red)
+            }
+        }
+    }
+    return PreviewWrapper().loadCustomFonts()
 }
