@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct CBScaleScrollView<Content: View>: View {
+public struct CBScaleScrollView<Content: View, Header: View>: View {
     
     @Binding var isPresented: Bool
     @Binding var scale: CGFloat
@@ -19,20 +19,20 @@ public struct CBScaleScrollView<Content: View>: View {
     @State private var dragOffset: CGFloat = 0.0
     @State private var deceleration: Double = 0.0
     
-    private let header: AnyView
+    private let header: Header
     private let content: Content
     
-    public init<Header: View>(
+    public init(
         isPresented: Binding<Bool>,
         scale: Binding<CGFloat>,
         isDown: Binding<Bool>,
-        header: Header,
+        @ViewBuilder header: () -> Header,
         @ViewBuilder content: () -> Content
     ) {
         self._isPresented = isPresented
         self._scale = scale
         self._isDown = isDown
-        self.header = AnyView(header)
+        self.header = header()
         self.content = content()
     }
     
@@ -41,47 +41,44 @@ public struct CBScaleScrollView<Content: View>: View {
             Color.backgroundNormalAlternative
                 .edgesIgnoringSafeArea(.all)
             
-            ZStack {
-                GeometryReader { geometry in
-                    VStack {
-                        self.content
-                        
-                        Spacer()
-                    }
-                    .overlay(
-                        alignment: .top,
-                        content: {
-                            self.header
-                                .padding(.top, BaseSize.topAreaPadding)
-                        }
-                    )
-                    .frame(maxWidth: .infinity)
-                    .contentShape(Rectangle())
-                    .background(Color.backgroundNormalNormal)
-                    .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
-                    .scaleEffect(self.scale)
-                    .ignoresSafeArea()
-                    .offset(y: self.offset + self.dragOffset)
-                    .background(
-                        GeometryReader { innerGeometry in
-                            Color.clear
-                                .onAppear {
-                                    self.contentHeight = innerGeometry.size.height
-                                    self.maxOffset = min(geometry.size.height - self.contentHeight, 0)
-                                }
-                        }
-                    )
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                self.handleDragChanged(value, geometry: geometry)
-                            }
-                            .onEnded { value in
-                                self.handleDragEnded(value)
-                            }
-                    )
+            GeometryReader { geometry in
+                VStack {
+                    self.content
+                    
+                    Spacer()
                 }
+                .frame(maxWidth: .infinity)
+                .contentShape(Rectangle())
+                .background(Color.backgroundNormalNormal)
+                .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
+                .scaleEffect(self.scale)
+                .ignoresSafeArea()
+                .offset(y: self.offset + self.dragOffset)
+                .background(
+                    GeometryReader { innerGeometry in
+                        Color.clear
+                            .onAppear {
+                                self.contentHeight = innerGeometry.size.height
+                                self.maxOffset = min(geometry.size.height - self.contentHeight, 0)
+                            }
+                    }
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            self.handleDragChanged(value, geometry: geometry)
+                        }
+                        .onEnded { value in
+                            self.handleDragEnded(value)
+                        }
+                )
             }
+            .overlay(
+                alignment: .top,
+                content: {
+                    self.header
+                }
+            )
         }
     }
     
@@ -148,20 +145,20 @@ public struct CBScaleScrollView<Content: View>: View {
                 isPresented: $isPresented,
                 scale: $scale,
                 isDown: $isDown,
-                header: Text("머리")
-            ) {
-                VStack {
-                    Text("123")
-                    Text("123")
-                    Text("123")
-                    Text("123")
-                    Text("123")
-                    Text("123")
-                    Text("123")
+                header: {
+                    Text("헤더")
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                },
+                content: {
+                    VStack {
+                        Text("123")
+                        Text("123")
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color.red)
                 }
-                .frame(maxWidth: .infinity)
-                .background(Color.red)
-            }
+            )
         }
     }
     return PreviewWrapper().loadCustomFonts()
