@@ -98,7 +98,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                 }
             }
             
-            self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -BaseSize.screenWidth * 1.2
+            self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -BaseSize.screenWidth
         }
     }
     
