@@ -42,7 +42,7 @@ public struct ThumbnailTitleView: View {
                     .truncationMode(.tail)
                 
                 Text(self.description)
-                    .font(.pretendard(size: 12, weight: .medium))
+                    .font(.pretendard(size: 12, weight: .regular))
                     .foregroundColor(Color.labelAlternative)
                     .lineLimit(1)
                     .truncationMode(.tail)
