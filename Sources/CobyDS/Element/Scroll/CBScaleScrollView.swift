@@ -37,6 +37,7 @@ public struct CBScaleScrollView<Content: View>: View {
         GeometryReader { geometry in
             ZStack {
                 self.content
+                    .contentShape(Rectangle())
                     .offset(y: self.offset + self.dragOffset)
                     .background(
                         GeometryReader { innerGeometry in
