@@ -1,6 +1,6 @@
 //
 //  CBScaleScrollView.swift
-//  
+//
 //
 //  Created by Coby on 6/9/24.
 //
@@ -34,29 +34,40 @@ public struct CBScaleScrollView<Content: View>: View {
     }
     
     public var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                self.content
-                    .contentShape(Rectangle())
-                    .offset(y: self.offset + self.dragOffset)
-                    .background(
-                        GeometryReader { innerGeometry in
-                            Color.clear
-                                .onAppear {
-                                    self.contentHeight = innerGeometry.size.height
-                                    self.maxOffset = min(geometry.size.height - self.contentHeight, 0)
-                                }
+        ZStack {
+            Color.backgroundNormalAlternative
+                .edgesIgnoringSafeArea(.all)
+            
+            GeometryReader { geometry in
+                VStack {
+                    self.content
+                    
+                    Spacer()
+                }
+                .contentShape(Rectangle())
+                .background(Color.backgroundNormalNormal)
+                .clipShape(RoundedRectangle(cornerRadius: self.scale == 1 ? 0 : 30))
+                .scaleEffect(self.scale)
+                .ignoresSafeArea()
+                .offset(y: self.offset + self.dragOffset)
+                .background(
+                    GeometryReader { innerGeometry in
+                        Color.clear
+                            .onAppear {
+                                self.contentHeight = innerGeometry.size.height
+                                self.maxOffset = min(geometry.size.height - self.contentHeight, 0)
+                            }
+                    }
+                )
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            self.handleDragChanged(value, geometry: geometry)
                         }
-                    )
-                    .gesture(
-                        DragGesture()
-                            .onChanged { value in
-                                self.handleDragChanged(value, geometry: geometry)
-                            }
-                            .onEnded { value in
-                                self.handleDragEnded(value)
-                            }
-                    )
+                        .onEnded { value in
+                            self.handleDragEnded(value)
+                        }
+                )
             }
         }
     }
