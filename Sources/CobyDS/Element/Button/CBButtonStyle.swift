@@ -16,11 +16,11 @@ public struct CBButtonStyle: ButtonStyle {
         case .outlined:
             switch buttonUsage {
             case .primary:
-                return self.isDisabled ? Color.labelDisable : self.buttonColor
+                return self.isDisabled ? Color.labelDisable : Color.labelNeutral
             case .secondary:
-                return self.isDisabled ? Color.labelDisable : self.buttonColor
+                return self.isDisabled ? Color.labelDisable : Color.labelAlternative
             case .assistive:
-                return self.isDisabled ? Color.labelDisable : Color.labelNormal
+                return self.isDisabled ? Color.labelDisable : Color.labelAssistive
             }
         case .text:
             switch self.buttonUsage {
@@ -48,12 +48,7 @@ public struct CBButtonStyle: ButtonStyle {
         case .solid:
             return Color.clear
         case .outlined:
-            switch self.buttonUsage {
-            case .primary:
-                return self.isDisabled ? Color.lineNormalNormal : self.buttonColor
-            default:
-                return Color.lineNormalNormal
-            }
+            return Color.lineNormalNormal
         case .text:
             return Color.clear
         }
@@ -93,7 +88,7 @@ public struct CBButtonStyle: ButtonStyle {
     
     public func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .font(.pretendard(size: self.buttonSize.fontSize, weight: .bold))
+            .font(.pretendard(size: self.buttonSize.fontSize, weight: .medium))
             .foregroundColor(self.foregroundColor)
             .frame(maxWidth: .infinity, minHeight: self.buttonSize.buttonHeight)
             .background(backgroundColor.cornerRadius(10))
@@ -110,7 +105,7 @@ public struct CBButtonStyle: ButtonStyle {
 }
 
 #Preview {
-    VStack(spacing: 50) {
+    VStack {
         Spacer()
         
         Button {
@@ -132,7 +127,39 @@ public struct CBButtonStyle: ButtonStyle {
         } label: {
             Text("버튼 테스트")
         }
-        .buttonStyle(CBButtonStyle(buttonType: .outlined))
+        .buttonStyle(
+            CBButtonStyle(
+                buttonType: .outlined,
+                buttonUsage: .primary,
+                buttonColor: Color.lineNormalNormal
+            )
+        )
+        
+        Button {
+            print("Clicked")
+        } label: {
+            Text("버튼 테스트")
+        }
+        .buttonStyle(
+            CBButtonStyle(
+                buttonType: .outlined,
+                buttonUsage: .secondary,
+                buttonColor: Color.lineNormalNormal
+            )
+        )
+        
+        Button {
+            print("Clicked")
+        } label: {
+            Text("버튼 테스트")
+        }
+        .buttonStyle(
+            CBButtonStyle(
+                buttonType: .outlined,
+                buttonUsage: .assistive,
+                buttonColor: Color.lineNormalNormal
+            )
+        )
         
         Button {
             print("Clicked")
@@ -143,6 +170,6 @@ public struct CBButtonStyle: ButtonStyle {
         
         Spacer()
     }
-    .background(Color.green30)
+    .background(Color.backgroundNormalNormal)
     .loadCustomFonts()
 }
