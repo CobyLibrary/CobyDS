@@ -19,6 +19,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
     @State private var dragOffset: CGFloat = 0.0
     @State private var deceleration: Double = 0.0
     
+    private let topContentHeight: CGFloat
     private let header: Header
     private let content: Content
     
@@ -26,12 +27,14 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
         isPresented: Binding<Bool>,
         scale: Binding<CGFloat>,
         isDown: Binding<Bool>,
+        topContentHeight: CGFloat = 0.0,
         @ViewBuilder header: () -> Header,
         @ViewBuilder content: () -> Content
     ) {
         self._isPresented = isPresented
         self._scale = scale
         self._isDown = isDown
+        self.topContentHeight = topContentHeight
         self.header = header()
         self.content = content()
     }
@@ -98,7 +101,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                 }
             }
             
-            self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -BaseSize.screenWidth
+            self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -self.topContentHeight
         }
     }
     
@@ -130,7 +133,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
             self.offset = self.maxOffset
         }
         
-        self.isDown = self.offset - BaseSize.topAreaPadding - 10 < -BaseSize.screenWidth * 1.2
+        self.isDown = self.offset - BaseSize.topAreaPadding - 10 < -self.topContentHeight
     }
 }
 
@@ -138,22 +141,34 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
     struct PreviewWrapper: View {
         @State var isPresented: Bool = true
         @State var scale: CGFloat = 1.0
-        @State var isDown: Bool = true
+        @State var isDown: Bool = false
+        
+        private let height: CGFloat = 200
         
         var body: some View {
             CBScaleScrollView(
                 isPresented: $isPresented,
                 scale: $scale,
                 isDown: $isDown,
+                topContentHeight: height,
                 header: {
                     Text("헤더")
                         .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                        .frame(height: 150)
+                        .background(isDown ? Color.clear : Color.blue.opacity(0.8))
                 },
                 content: {
                     VStack {
-                        Text("123")
-                        Text("123")
+                        VStack {
+                            Text("top")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(height: height)
+                        .background(Color.green)
+                        
+                        ForEach(0..<200) { _ in
+                            Text("123")
+                        }
                     }
                     .frame(maxWidth: .infinity)
                     .background(Color.red)
