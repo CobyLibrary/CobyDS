@@ -19,17 +19,20 @@ public struct CBScaleScrollView<Content: View>: View {
     @State private var dragOffset: CGFloat = 0.0
     @State private var deceleration: Double = 0.0
     
+    private let header: AnyView
     private let content: Content
     
-    public init(
+    public init<Header: View>(
         isPresented: Binding<Bool>,
         scale: Binding<CGFloat>,
         isDown: Binding<Bool>,
+        header: Header,
         @ViewBuilder content: () -> Content
     ) {
         self._isPresented = isPresented
         self._scale = scale
         self._isDown = isDown
+        self.header = AnyView(header)
         self.content = content()
     }
     
@@ -45,6 +48,13 @@ public struct CBScaleScrollView<Content: View>: View {
                         
                         Spacer()
                     }
+                    .overlay(
+                        alignment: .top,
+                        content: {
+                            self.header
+                                .padding(.top, BaseSize.topAreaPadding)
+                        }
+                    )
                     .frame(maxWidth: .infinity)
                     .contentShape(Rectangle())
                     .background(Color.backgroundNormalNormal)
@@ -137,7 +147,8 @@ public struct CBScaleScrollView<Content: View>: View {
             CBScaleScrollView(
                 isPresented: $isPresented,
                 scale: $scale,
-                isDown: $isDown
+                isDown: $isDown,
+                header: Text("머리")
             ) {
                 VStack {
                     Text("123")
