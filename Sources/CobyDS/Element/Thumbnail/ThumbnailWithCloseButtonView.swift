@@ -15,7 +15,7 @@ public struct ThumbnailWithCloseButtonView: View {
     
     public init(
         image: UIImage?,
-        isShadowing: Bool,
+        isShadowing: Bool = false,
         closeAction: @escaping () -> Void
     ) {
         self.image = image
