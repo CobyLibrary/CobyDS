@@ -30,6 +30,7 @@ extension UIImage {
     public static let icSearch = UIImage(name: "search")!
     public static let icPerson = UIImage(name: "person")!
     public static let icImage = UIImage(name: "image")!
+    public static let icClose = UIImage(name: "close")!
 }
 
 public extension UIImage {
