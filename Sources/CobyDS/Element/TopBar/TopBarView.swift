@@ -10,7 +10,7 @@ import SwiftUI
 public struct TopBarView: View {
     
     public enum ContentType {
-        case none, title, text, left, icon
+        case none, title, text, left, icon, iconInverse
     }
     
     public enum BarType {
@@ -101,7 +101,7 @@ public struct TopBarView: View {
             switch contentType {
             case .none:
                 Rectangle()
-                    .fill(Color.backgroundNormalNormal)
+                    .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
                     .frame(width: 40, height: 40)
             case .title:
                 Text(title)
@@ -128,7 +128,24 @@ public struct TopBarView: View {
                         .padding(.horizontal, 16)
                 } else {
                     Rectangle()
-                        .fill(Color.backgroundNormalNormal)
+                        .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
+                        .frame(width: 40, height: 40)
+                }
+            case .iconInverse:
+                if let icon = icon {
+                    Image(uiImage: icon)
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color.inverseLabel)
+                        .padding(8)
+                        .background {
+                            Circle()
+                                .fill(Color.inverseBackground.opacity(0.7))
+                        }
+                        .padding(.horizontal, 8)
+                } else {
+                    Rectangle()
+                        .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
                         .frame(width: 40, height: 40)
                 }
             }
@@ -149,9 +166,16 @@ public struct TopBarView: View {
         )
         
         TopBarView(
-            barType: .underlined,
+            barType: .transParents,
+            rightSide: .iconInverse,
+            rightIcon: UIImage.icClose,
+            rightAction: { }
+        )
+        
+        TopBarView(
+            barType: .transParents,
             rightSide: .icon,
-            rightIcon: UIImage.icForward,
+            rightIcon: UIImage.icClose,
             rightAction: { }
         )
         
@@ -183,5 +207,6 @@ public struct TopBarView: View {
             leftSide: .none
         )
     }
+    .background(Color.red30)
     .loadCustomFonts()
 }
