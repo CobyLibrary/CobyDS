@@ -31,6 +31,9 @@ extension UIImage {
     public static let icPerson = UIImage(name: "person")!
     public static let icImage = UIImage(name: "image")!
     public static let icClose = UIImage(name: "close")!
+    public static let icCamera = UIImage(name: "camera")!
+    public static let icMore = UIImage(name: "more")!
+    public static let icPlus = UIImage(name: "plus")!
 }
 
 public extension UIImage {

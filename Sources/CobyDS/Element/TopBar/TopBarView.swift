@@ -137,12 +137,12 @@ public struct TopBarView: View {
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color.inverseLabel)
-                        .padding(8)
+                        .padding(4)
                         .background {
                             Circle()
                                 .fill(Color.inverseBackground.opacity(0.7))
                         }
-                        .padding(.horizontal, 8)
+                        .padding(.horizontal, 12)
                 } else {
                     Rectangle()
                         .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
@@ -167,6 +167,8 @@ public struct TopBarView: View {
         
         TopBarView(
             barType: .transParents,
+            leftSide: .iconInverse,
+            leftIcon: UIImage.icBack,
             rightSide: .iconInverse,
             rightIcon: UIImage.icClose,
             rightAction: { }
@@ -174,6 +176,8 @@ public struct TopBarView: View {
         
         TopBarView(
             barType: .transParents,
+            leftSide: .iconInverse,
+            leftIcon: UIImage.icClose,
             rightSide: .icon,
             rightIcon: UIImage.icClose,
             rightAction: { }
