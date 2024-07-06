@@ -69,7 +69,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                             self.handleDragChanged(value, geometry: geometry)
                         }
                         .onEnded { value in
-                            self.handleDragEnded(value)
+                            self.handleDragEnded(value, geometry: geometry)
                         }
                 )
             }
@@ -87,7 +87,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
     
     private func handleDragChanged(_ value: DragGesture.Value, geometry: GeometryProxy) {
         let nextOffset = self.offset + value.translation.height
-            
+        
         if nextOffset >= 0 {
             let scaleValue = (value.translation.height - 100) / UIScreen.main.bounds.height
             if 1 - scaleValue > 0.75 && scaleValue > 0 {
@@ -103,18 +103,19 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
         self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -self.topContentHeight
     }
     
-    private func handleDragEnded(_ value: DragGesture.Value) {
+    private func handleDragEnded(_ value: DragGesture.Value, geometry: GeometryProxy) {
         let gestureVelocity = value.predictedEndLocation.y - value.location.y
         self.deceleration = Double(gestureVelocity)
-        continueAnimation()
         
-        if self.scale < 0.9 {
-            withAnimation(.spring()) {
+        let springAnimation = Animation.spring(response: 0.5, dampingFraction: 0.75, blendDuration: 0.5)
+        
+        withAnimation(springAnimation) {
+            continueAnimation()
+            
+            if self.scale < 0.9 {
                 self.isPresented = false
             }
-        }
-        
-        withAnimation(.spring()) {
+            
             self.scale = 1
         }
     }
@@ -128,9 +129,13 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
         self.deceleration = 0.0
         
         if self.offset >= 0 {
-            self.offset = 0
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.75, blendDuration: 0.5)) {
+                self.offset = 0
+            }
         } else if self.offset < self.maxOffset {
-            self.offset = self.maxOffset
+            withAnimation(.spring(response: 0.5, dampingFraction: 0.75, blendDuration: 0.5)) {
+                self.offset = self.maxOffset
+            }
         }
         
         self.isDown = self.offset - BaseSize.topAreaPadding - 10 < -self.topContentHeight
@@ -175,7 +180,7 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                             
                             CBDivider()
                             
-                            ForEach(0..<200) { _ in
+                            ForEach(0..<100) { _ in
                                 Text("내용이다")
                                     .font(.pretendard(size: 16, weight: .regular))
                                     .foregroundColor(Color.labelNormal)
