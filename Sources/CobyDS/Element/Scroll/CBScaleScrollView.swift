@@ -86,23 +86,21 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
     }
     
     private func handleDragChanged(_ value: DragGesture.Value, geometry: GeometryProxy) {
-        withAnimation {
-            let nextOffset = self.offset + value.translation.height
+        let nextOffset = self.offset + value.translation.height
             
-            if nextOffset >= 0 {
-                let scaleValue = (value.translation.height - 100) / UIScreen.main.bounds.height
-                if 1 - scaleValue > 0.75 && scaleValue > 0 {
-                    self.scale = 1 - scaleValue
-                    self.dragOffset = 0
-                }
-            } else if self.scale == 1 {
-                if nextOffset > self.maxOffset {
-                    self.dragOffset = value.translation.height
-                }
+        if nextOffset >= 0 {
+            let scaleValue = (value.translation.height - 100) / UIScreen.main.bounds.height
+            if 1 - scaleValue > 0.75 && scaleValue > 0 {
+                self.scale = 1 - scaleValue
+                self.dragOffset = 0
             }
-            
-            self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -self.topContentHeight
+        } else if self.scale == 1 {
+            if nextOffset > self.maxOffset {
+                self.dragOffset = value.translation.height
+            }
         }
+        
+        self.isDown = nextOffset - BaseSize.topAreaPadding - 10 < -self.topContentHeight
     }
     
     private func handleDragEnded(_ value: DragGesture.Value) {
@@ -159,19 +157,35 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
                 },
                 content: {
                     VStack {
-                        VStack {
-                            Text("top")
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: height)
-                        .background(Color.green)
+                        ThumbnailEmptyView()
+                            .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
                         
-                        ForEach(0..<200) { _ in
-                            Text("123")
+                        VStack(alignment: .leading, spacing: 16) {
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("제목")
+                                    .font(.pretendard(size: 20, weight: .semibold))
+                                    .foregroundStyle(Color.labelNormal)
+                                
+                                Text("날짜")
+                                    .font(.pretendard(size: 14, weight: .regular))
+                                    .foregroundStyle(Color.labelAlternative)
+                            }
+                            
+                            CBDivider()
+                            
+                            ForEach(0..<200) { _ in
+                                Text("내용이다")
+                                    .font(.pretendard(size: 16, weight: .regular))
+                                    .foregroundColor(Color.labelNormal)
+                                    .multilineTextAlignment(.leading)
+                                    .lineLimit(nil)
+                                    .fixedSize(horizontal: false, vertical: true)
+                            }
                         }
+                        .padding(.horizontal, BaseSize.horizantalPadding)
+                        .frame(maxWidth: .infinity)
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color.red)
+                    .padding(.bottom, BaseSize.bottomAreaPadding + BaseSize.cellVerticalSpacing)
                 }
             )
         }
