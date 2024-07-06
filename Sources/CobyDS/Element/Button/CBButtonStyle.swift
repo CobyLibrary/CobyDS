@@ -131,6 +131,7 @@ public struct CBButtonStyle: ButtonStyle {
             CBButtonStyle(
                 buttonType: .outlined,
                 buttonUsage: .primary,
+                buttonSize: .large,
                 buttonColor: Color.lineNormalNormal
             )
         )
@@ -144,6 +145,7 @@ public struct CBButtonStyle: ButtonStyle {
             CBButtonStyle(
                 buttonType: .outlined,
                 buttonUsage: .secondary,
+                buttonSize: .medium,
                 buttonColor: Color.lineNormalNormal
             )
         )
@@ -157,6 +159,7 @@ public struct CBButtonStyle: ButtonStyle {
             CBButtonStyle(
                 buttonType: .outlined,
                 buttonUsage: .assistive,
+                buttonSize: .small,
                 buttonColor: Color.lineNormalNormal
             )
         )
