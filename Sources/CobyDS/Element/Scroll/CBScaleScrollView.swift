@@ -104,15 +104,17 @@ public struct CBScaleScrollView<Content: View, Header: View>: View {
     }
     
     private func handleDragEnded(_ value: DragGesture.Value) {
-        withAnimation(.spring()) {
-            let gestureVelocity = value.predictedEndLocation.y - value.location.y
-            self.deceleration = Double(gestureVelocity)
-            self.continueAnimation()
-            
-            if self.scale < 0.9 {
+        let gestureVelocity = value.predictedEndLocation.y - value.location.y
+        self.deceleration = Double(gestureVelocity)
+        continueAnimation()
+        
+        if self.scale < 0.9 {
+            withAnimation(.spring()) {
                 self.isPresented = false
             }
-            
+        }
+        
+        withAnimation(.spring()) {
             self.scale = 1
         }
     }
