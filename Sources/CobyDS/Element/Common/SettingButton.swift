@@ -23,7 +23,7 @@ public struct SettingButton: View {
     public var body: some View {
         HStack {
             Text(self.title)
-                .font(.pretendard(size: 18, weight: .regular))
+                .font(.pretendard(size: 17, weight: .regular))
                 .foregroundColor(Color.labelNormal)
             
             Spacer()
