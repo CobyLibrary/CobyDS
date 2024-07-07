@@ -22,22 +22,22 @@ public struct RadioListItemView: View {
     
     public var body: some View {
         HStack(spacing: 4) {
-            Image(uiImage: self.isChecked ? UIImage.icRadioOn : UIImage.icRadioOff)
-            
             Text(self.title)
-                .font(.pretendard(size: 16, weight: .medium))
+                .font(.pretendard(size: 16, weight: .regular))
                 .foregroundColor(.labelNormal)
                 .multilineTextAlignment(.leading)
             
             Spacer()
+            
+            Image(uiImage: self.isChecked ? UIImage.icRadioOn : UIImage.icRadioOff)
+                .padding(.trailing, -8)
         }
         .contentShape(Rectangle())
-        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    VStack {
+    VStack(spacing: 0) {
         RadioListItemView(
             isChecked: true,
             title: "체크"
@@ -48,5 +48,6 @@ public struct RadioListItemView: View {
             title: "체크"
         )
     }
+    .padding(.horizontal, BaseSize.horizantalPadding)
     .loadCustomFonts()
 }

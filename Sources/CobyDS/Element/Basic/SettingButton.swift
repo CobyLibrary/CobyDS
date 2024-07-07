@@ -23,7 +23,7 @@ public struct SettingButton: View {
     public var body: some View {
         HStack {
             Text(self.title)
-                .font(.pretendard(size: 17, weight: .regular))
+                .font(.pretendard(size: 16, weight: .regular))
                 .foregroundColor(Color.labelNormal)
             
             Spacer()
@@ -34,7 +34,6 @@ public struct SettingButton: View {
                 .foregroundColor(Color.labelAlternative)
                 .padding(.trailing, -8)
         }
-        .padding(.horizontal, BaseSize.horizantalPadding)
         .padding(.vertical, 12)
         .onTapGesture {
             self.action()
@@ -52,5 +51,6 @@ public struct SettingButton: View {
             print("클릭")
         }
     }
+    .padding(.horizontal, BaseSize.horizantalPadding)
     .loadCustomFonts()
 }

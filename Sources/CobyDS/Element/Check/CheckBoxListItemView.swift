@@ -41,7 +41,7 @@ public struct CheckBoxListItemView: View {
 }
 
 #Preview {
-    VStack {
+    VStack(spacing: 0) {
         CheckBoxListItemView(
             isChecked: .constant(true),
             title: "동의합니다."
@@ -52,5 +52,6 @@ public struct CheckBoxListItemView: View {
             title: "동의합니다."
         )
     }
+    .padding(.horizontal, BaseSize.horizantalPadding)
     .loadCustomFonts()
 }
