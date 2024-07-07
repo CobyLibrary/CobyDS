@@ -1,5 +1,5 @@
 //
-//  TitleButton.swift
+//  SettingButton.swift
 //
 //
 //  Created by Coby on 7/8/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct TitleButton: View {
+public struct SettingButton: View {
     
     private let title: String
     private let action: () -> Void
@@ -23,15 +23,16 @@ public struct TitleButton: View {
     public var body: some View {
         HStack {
             Text(self.title)
-                .font(.pretendard(size: 16, weight: .regular))
+                .font(.pretendard(size: 18, weight: .regular))
                 .foregroundColor(Color.labelNormal)
             
             Spacer()
             
             Image(uiImage: UIImage.icForward)
                 .resizable()
-                .frame(width: 16, height: 16)
+                .frame(width: 20, height: 20)
                 .foregroundColor(Color.labelAlternative)
+                .padding(.trailing, -8)
         }
         .padding(.horizontal, BaseSize.horizantalPadding)
         .padding(.vertical, 12)
@@ -43,11 +44,11 @@ public struct TitleButton: View {
 
 #Preview {
     VStack(spacing: 0) {
-        TitleButton(title: "버튼이에요") {
+        SettingButton(title: "버튼이에요") {
             print("클릭")
         }
         
-        TitleButton(title: "버튼이에요") {
+        SettingButton(title: "버튼이에요") {
             print("클릭")
         }
     }
