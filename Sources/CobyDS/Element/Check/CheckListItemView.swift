@@ -23,7 +23,10 @@ public struct CheckListItemView: View {
     
     public var body: some View {
         HStack(spacing: 4) {
-            Image(uiImage: self.isChecked ? UIImage.icCheckOn : UIImage.icCheckOff)
+            Image(uiImage: UIImage.icCheck)
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(self.isChecked ? Color.labelNeutral : Color.labelDisable)
             
             Text(self.title)
                 .font(.pretendard(size: 16, weight: .regular))

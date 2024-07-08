@@ -24,6 +24,9 @@ public struct CheckBoxListItemView: View {
     public var body: some View {
         HStack(spacing: 4) {
             Image(uiImage: self.isChecked ? UIImage.icCheckboxOn : UIImage.icCheckboxOff)
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(Color.labelNeutral)
             
             Text(self.title)
                 .font(.pretendard(size: 16, weight: .regular))

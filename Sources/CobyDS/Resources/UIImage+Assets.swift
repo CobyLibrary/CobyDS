@@ -14,8 +14,7 @@ extension UIImage {
     }
     
     // On & Off
-    public static let icCheckOff = UIImage(name: "check_off")!
-    public static let icCheckOn = UIImage(name: "check_on")!
+    public static let icCheck = UIImage(name: "check")!
     public static let icCheckboxOff = UIImage(name: "checkbox_off")!
     public static let icCheckboxOn = UIImage(name: "checkbox_on")!
     public static let icRadioOff = UIImage(name: "radio_off")!
