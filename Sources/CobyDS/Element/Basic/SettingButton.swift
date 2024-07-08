@@ -35,6 +35,7 @@ public struct SettingButton: View {
                 .padding(.trailing, -8)
         }
         .padding(.vertical, 12)
+        .contentShape(Rectangle())
         .onTapGesture {
             self.action()
         }
