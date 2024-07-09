@@ -18,21 +18,35 @@ public struct PhotosView: View {
     }
     
     public var body: some View {
-        TabView {
-            ForEach(self.photos, id: \.self) { photo in
-                Image(uiImage: photo)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
-                    .clipped()
-                    .contentShape(Rectangle())
-                    .edgesIgnoringSafeArea(.top)
+        if self.photos.isEmpty {
+            ThumbnailEmptyView()
+                .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
+                .edgesIgnoringSafeArea(.top)
+        } else {
+            TabView {
+                ForEach(self.photos, id: \.self) { photo in
+                    Image(uiImage: photo)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
+                        .clipped()
+                        .contentShape(Rectangle())
+                        .edgesIgnoringSafeArea(.top)
+                }
             }
+            .background(Color.backgroundNormalAlternative)
+            .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
+            .tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
+            .edgesIgnoringSafeArea(.top)
         }
-        .background(Color.backgroundNormalAlternative)
-        .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .never))
-        .edgesIgnoringSafeArea(.top)
+    }
+}
+
+#Preview {
+    VStack {
+        PhotosView(photos: [])
+        
+        Spacer()
     }
 }
