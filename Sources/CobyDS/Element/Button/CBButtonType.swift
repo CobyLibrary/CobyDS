@@ -34,9 +34,9 @@ public enum CBButtonSize {
         case .large:
             return 16
         case .medium:
-            return 15
+            return 14
         case .small:
-            return 13
+            return 12
         }
     }
 }

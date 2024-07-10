@@ -1,5 +1,5 @@
 //
-//  SettingButton.swift
+//  SettingListItem.swift
 //
 //
 //  Created by Coby on 7/8/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct SettingButton: View {
+public struct SettingListItem: View {
     
     private let title: String
     private let action: () -> Void
@@ -44,11 +44,11 @@ public struct SettingButton: View {
 
 #Preview {
     VStack(spacing: 0) {
-        SettingButton(title: "버튼이에요") {
+        SettingListItem(title: "버튼이에요") {
             print("클릭")
         }
         
-        SettingButton(title: "버튼이에요") {
+        SettingListItem(title: "버튼이에요") {
             print("클릭")
         }
     }
