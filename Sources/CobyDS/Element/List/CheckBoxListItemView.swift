@@ -22,7 +22,7 @@ public struct CheckBoxListItemView: View {
     }
     
     public var body: some View {
-        HStack(spacing: 4) {
+        HStack(spacing: 8) {
             Image(uiImage: self.isChecked ? UIImage.icCheckboxOn : UIImage.icCheckboxOff)
                 .resizable()
                 .frame(width: 24, height: 24)

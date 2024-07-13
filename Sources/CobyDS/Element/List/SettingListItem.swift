@@ -32,7 +32,6 @@ public struct SettingListItem: View {
                 .resizable()
                 .frame(width: 20, height: 20)
                 .foregroundColor(Color.labelAlternative)
-                .padding(.trailing, -8)
         }
         .padding(.vertical, 12)
         .contentShape(Rectangle())
