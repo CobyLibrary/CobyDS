@@ -107,12 +107,12 @@ public struct TopBarView: View {
                 Text(title)
                     .font(.pretendard(size: 20, weight: .bold))
                     .foregroundColor(Color.labelNormal)
-                    .padding(.horizontal, BaseSize.horizantalPadding - 4)
+                    .padding(.horizontal, BaseSize.horizantalPadding)
             case .text:
                 Text(title)
                     .font(.pretendard(size: 16, weight: .medium))
                     .foregroundColor(Color.labelNormal)
-                    .padding(.horizontal, BaseSize.horizantalPadding - 4)
+                    .padding(.horizontal, BaseSize.horizantalPadding)
             case .left:
                 Image(uiImage: UIImage.icBack)
                     .resizable()
