@@ -66,7 +66,7 @@ public struct TopBarView: View {
             }
             
             Text(self.title)
-                .font(.pretendard(size: 18, weight: .semibold))
+                .font(.pretendard(size: 18, weight: .medium))
                 .foregroundColor(Color.labelNormal)
             
             HStack {
