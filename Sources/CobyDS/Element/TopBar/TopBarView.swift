@@ -118,14 +118,14 @@ public struct TopBarView: View {
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color.labelNormal)
-                    .padding(.horizontal, BaseSize.horizantalPadding - 8)
+                    .padding(.horizontal, BaseSize.horizantalPadding - 4)
             case .icon:
                 if let icon = icon {
                     Image(uiImage: icon)
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color.labelNormal)
-                        .padding(.horizontal, BaseSize.horizantalPadding - 8)
+                        .padding(.horizontal, BaseSize.horizantalPadding - 4)
                 } else {
                     Rectangle()
                         .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
@@ -142,7 +142,7 @@ public struct TopBarView: View {
                             Circle()
                                 .fill(Color.inverseBackground.opacity(0.7))
                         }
-                        .padding(.horizontal, BaseSize.horizantalPadding - 12)
+                        .padding(.horizontal, BaseSize.horizantalPadding - 8)
                 } else {
                     Rectangle()
                         .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
