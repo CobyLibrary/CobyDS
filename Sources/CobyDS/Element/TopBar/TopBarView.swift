@@ -107,12 +107,12 @@ public struct TopBarView: View {
                 Text(title)
                     .font(.pretendard(size: 20, weight: .bold))
                     .foregroundColor(Color.labelNormal)
-                    .padding(.horizontal, BaseSize.horizantalPadding)
+                    .padding(.horizontal, BaseSize.horizantalPadding - 4)
             case .text:
                 Text(title)
-                    .font(.pretendard(size: 18, weight: .medium))
+                    .font(.pretendard(size: 16, weight: .medium))
                     .foregroundColor(Color.labelNormal)
-                    .padding(.horizontal, BaseSize.horizantalPadding)
+                    .padding(.horizontal, BaseSize.horizantalPadding - 4)
             case .left:
                 Image(uiImage: UIImage.icBack)
                     .resizable()
@@ -197,6 +197,7 @@ public struct TopBarView: View {
             barType: .underlined,
             leftSide: .text,
             leftTitle: "확인",
+            title: "제목",
             rightSide: .text,
             rightTitle: "확인",
             rightAction: { }
