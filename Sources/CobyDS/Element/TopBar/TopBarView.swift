@@ -10,7 +10,7 @@ import SwiftUI
 public struct TopBarView: View {
     
     public enum ContentType {
-        case none, title, text, left, icon, iconInverse
+        case none, title, text, left, leftWhite, icon, iconInverse, iconInverseWhite
     }
     
     public enum BarType {
@@ -119,11 +119,27 @@ public struct TopBarView: View {
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color.labelNormal)
                     .padding(.horizontal, BaseSize.horizantalPadding - 4)
+            case .leftWhite:
+                Image(.back)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(Color.labelNormal)
+                    .padding(4)
+                    .background {
+                        Circle()
+                            .fill(Color.staticWhite)
+                    }
+                    .background {
+                        Circle()
+                            .stroke(Color.labelNormal, lineWidth: 5)
+                    }
+                    .padding(.horizontal, BaseSize.horizantalPadding - 8)
             case .icon:
                 if let icon = icon {
                     icon
                         .resizable()
                         .frame(width: 24, height: 24)
+                        .foregroundColor(Color.labelNormal)
                         .padding(.horizontal, BaseSize.horizantalPadding - 4)
                 } else {
                     Rectangle()
@@ -140,6 +156,27 @@ public struct TopBarView: View {
                         .background {
                             Circle()
                                 .fill(Color.inverseBackground.opacity(0.7))
+                        }
+                        .padding(.horizontal, BaseSize.horizantalPadding - 8)
+                } else {
+                    Rectangle()
+                        .fill(self.barType == .transParents ? Color.clear : Color.backgroundNormalNormal)
+                        .frame(width: 40, height: 40)
+                }
+            case .iconInverseWhite:
+                if let icon = icon {
+                    icon
+                        .resizable()
+                        .frame(width: 24, height: 24)
+                        .foregroundColor(Color.labelNormal)
+                        .padding(4)
+                        .background {
+                            Circle()
+                                .fill(Color.staticWhite)
+                        }
+                        .background {
+                            Circle()
+                                .stroke(Color.labelNormal, lineWidth: 5)
                         }
                         .padding(.horizontal, BaseSize.horizantalPadding - 8)
                 } else {
@@ -175,8 +212,8 @@ public struct TopBarView: View {
         
         TopBarView(
             barType: .transParents,
-            leftSide: .iconInverse,
-            leftIcon: Image(.close),
+            leftSide: .iconInverseWhite,
+            leftIcon: Image(.back),
             rightSide: .icon,
             rightIcon: Image(.close),
             rightAction: { }
@@ -211,6 +248,6 @@ public struct TopBarView: View {
             leftSide: .none
         )
     }
-    .background(Color.red30)
+    .background(Color.backgroundNormalAlternative)
     .loadCustomFonts()
 }
