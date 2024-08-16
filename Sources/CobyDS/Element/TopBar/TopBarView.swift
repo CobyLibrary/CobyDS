@@ -124,7 +124,6 @@ public struct TopBarView: View {
                     icon
                         .resizable()
                         .frame(width: 24, height: 24)
-                        .foregroundColor(Color.labelNormal)
                         .padding(.horizontal, BaseSize.horizantalPadding - 4)
                 } else {
                     Rectangle()
