@@ -79,14 +79,12 @@ public struct ThumbnailCardView: View {
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
             isShadowing: true
         )
-        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
         
         ThumbnailCardView(
             image: Image(.image),
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
         )
-        .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
     }
     .loadCustomFonts()
 }

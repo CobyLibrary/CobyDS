@@ -88,7 +88,6 @@ public struct ThumbnailTileView: View {
             subTitle: "date",
             description: "description"
         )
-        .frame(width: BaseSize.fullWidth, height: 100)
         
         ThumbnailTileView(
             isSelected: false,
@@ -97,6 +96,5 @@ public struct ThumbnailTileView: View {
             subTitle: "date",
             description: "description"
         )
-        .frame(width: BaseSize.fullWidth, height: 150)
     }
 }
