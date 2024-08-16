@@ -29,7 +29,7 @@ public struct RadioListItemView: View {
             
             Spacer()
             
-            Image(uiImage: self.isChecked ? UIImage.icRadioOn : UIImage.icRadioOff)
+            Image(self.isChecked ? .radioOn : .radioOff)
                 .resizable()
                 .frame(width: 24, height: 24)
                 .foregroundColor(Color.labelNeutral)

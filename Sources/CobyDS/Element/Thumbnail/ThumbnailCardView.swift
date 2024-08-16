@@ -9,13 +9,13 @@ import SwiftUI
 
 public struct ThumbnailCardView: View {
     
-    private let image: UIImage?
+    private let image: Image?
     private let title: String
     private let description: String
     private let isShadowing: Bool
     
     public init(
-        image: UIImage? = nil,
+        image: Image? = nil,
         title: String,
         description: String,
         isShadowing: Bool = false
@@ -74,7 +74,7 @@ public struct ThumbnailCardView: View {
 #Preview {
     VStack {
         ThumbnailCardView(
-            image: UIImage.icImage,
+            image: Image(.image),
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
             isShadowing: true
@@ -82,7 +82,7 @@ public struct ThumbnailCardView: View {
         .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
         
         ThumbnailCardView(
-            image: UIImage.icImage,
+            image: Image(.image),
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
         )

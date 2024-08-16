@@ -9,12 +9,12 @@ import SwiftUI
 
 public struct ThumbnailWithCloseButtonView: View {
     
-    private let image: UIImage?
+    private let image: Image?
     private let isShadowing: Bool
     private let closeAction: () -> Void
     
     public init(
-        image: UIImage?,
+        image: Image?,
         isShadowing: Bool = false,
         closeAction: @escaping () -> Void
     ) {
@@ -31,7 +31,7 @@ public struct ThumbnailWithCloseButtonView: View {
         .overlay(
             alignment: .topTrailing
         ) {
-            Image(uiImage: UIImage.icClose)
+            Image(.close)
                 .resizable()
                 .frame(width: 20, height: 20)
                 .foregroundColor(Color.staticWhite)
@@ -50,7 +50,7 @@ public struct ThumbnailWithCloseButtonView: View {
 
 #Preview {
     ThumbnailWithCloseButtonView(
-        image: UIImage.icImage,
+        image: Image(.image),
         isShadowing: true,
         closeAction: {
             print("close")

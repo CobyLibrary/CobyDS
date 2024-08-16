@@ -20,24 +20,24 @@ public struct TopBarView: View {
     private let barType: BarType
     private let leftSide: ContentType
     private let leftTitle: String
-    private let leftIcon: UIImage?
+    private let leftIcon: Image?
     private let leftAction: () -> Void
     private let title: String
     private let rightSide: ContentType
     private let rightTitle: String
-    private let rightIcon: UIImage?
+    private let rightIcon: Image?
     private let rightAction: () -> Void
     
     public init(
         barType: BarType = .filled,
         leftSide: ContentType = .left,
         leftTitle: String = "",
-        leftIcon: UIImage? = nil,
+        leftIcon: Image? = nil,
         leftAction: @escaping () -> Void = {},
         title: String = "",
         rightSide: ContentType = .none,
         rightTitle: String = "",
-        rightIcon: UIImage? = nil,
+        rightIcon: Image? = nil,
         rightAction: @escaping () -> Void = {}
     ) {
         self.barType = barType
@@ -94,7 +94,7 @@ public struct TopBarView: View {
     func BarContentView(
         contentType: ContentType,
         title: String = "",
-        icon: UIImage? = nil,
+        icon: Image? = nil,
         action: @escaping () -> Void = {}
     ) -> some View {
         Group {
@@ -114,14 +114,14 @@ public struct TopBarView: View {
                     .foregroundColor(Color.labelNormal)
                     .padding(.horizontal, BaseSize.horizantalPadding)
             case .left:
-                Image(uiImage: UIImage.icBack)
+                Image(.back)
                     .resizable()
                     .frame(width: 24, height: 24)
                     .foregroundColor(Color.labelNormal)
                     .padding(.horizontal, BaseSize.horizantalPadding - 4)
             case .icon:
                 if let icon = icon {
-                    Image(uiImage: icon)
+                    icon
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color.labelNormal)
@@ -133,7 +133,7 @@ public struct TopBarView: View {
                 }
             case .iconInverse:
                 if let icon = icon {
-                    Image(uiImage: icon)
+                    icon
                         .resizable()
                         .frame(width: 24, height: 24)
                         .foregroundColor(Color.inverseLabel)
@@ -168,18 +168,18 @@ public struct TopBarView: View {
         TopBarView(
             barType: .transParents,
             leftSide: .iconInverse,
-            leftIcon: UIImage.icBack,
+            leftIcon: Image(.back),
             rightSide: .iconInverse,
-            rightIcon: UIImage.icClose,
+            rightIcon: Image(.close),
             rightAction: { }
         )
         
         TopBarView(
             barType: .transParents,
             leftSide: .iconInverse,
-            leftIcon: UIImage.icClose,
+            leftIcon: Image(.close),
             rightSide: .icon,
-            rightIcon: UIImage.icClose,
+            rightIcon: Image(.close),
             rightAction: { }
         )
         
@@ -189,7 +189,7 @@ public struct TopBarView: View {
             leftTitle: "확인",
             title: "제목",
             rightSide: .icon,
-            rightIcon: UIImage.icForward,
+            rightIcon: Image(.forward),
             rightAction: { }
         )
         

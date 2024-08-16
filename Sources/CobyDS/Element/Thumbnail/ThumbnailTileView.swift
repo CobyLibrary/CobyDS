@@ -10,7 +10,7 @@ import SwiftUI
 public struct ThumbnailTileView: View {
     
     private let isSelected: Bool
-    private let image: UIImage?
+    private let image: Image?
     private let title: String
     private let subTitle: String?
     private let description: String
@@ -18,7 +18,7 @@ public struct ThumbnailTileView: View {
 
     public init(
         isSelected: Bool = false,
-        image: UIImage?,
+        image: Image?,
         title: String,
         subTitle: String?,
         description: String,

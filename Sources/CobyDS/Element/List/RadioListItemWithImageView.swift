@@ -10,12 +10,12 @@ import SwiftUI
 public struct RadioListItemWithImageView: View {
     
     private let isChecked: Bool
-    private let image: UIImage
+    private let image: Image
     private let title: String
     
     public init(
         isChecked: Bool,
-        image: UIImage,
+        image: Image,
         title: String
     ) {
         self.isChecked = isChecked
@@ -37,7 +37,7 @@ public struct RadioListItemWithImageView: View {
             
             Spacer()
             
-            Image(uiImage: self.isChecked ? UIImage.icRadioOn : UIImage.icRadioOff)
+            Image(self.isChecked ? .radioOn : .radioOff)
                 .resizable()
                 .frame(width: 24, height: 24)
                 .foregroundColor(Color.labelNeutral)
@@ -50,13 +50,13 @@ public struct RadioListItemWithImageView: View {
     VStack(spacing: 0) {
         RadioListItemWithImageView(
             isChecked: true,
-            image: UIImage.icCamera,
+            image: Image(.image),
             title: "제목"
         )
         
         RadioListItemWithImageView(
             isChecked: false,
-            image: UIImage.icCamera,
+            image: Image(.image),
             title: "제목"
         )
     }

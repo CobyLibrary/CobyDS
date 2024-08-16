@@ -28,7 +28,7 @@ public struct SettingListItem: View {
             
             Spacer()
             
-            Image(uiImage: UIImage.icForward)
+            Image(.forward)
                 .resizable()
                 .frame(width: 20, height: 20)
                 .foregroundColor(Color.labelAlternative)
