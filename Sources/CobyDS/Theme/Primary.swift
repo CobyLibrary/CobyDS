@@ -9,267 +9,110 @@ import SwiftUI
 
 extension Color {
     
+    private static var currentColorScheme: ColorScheme {
+        return UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
+    }
+    
     // Blue
     public static var blueNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.blue60)
-            default:
-                return UIColor(self.blue50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.blue60 : Color.blue50
     }
     
     public static var blueStrong: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.blue55)
-            default:
-                return UIColor(self.blue45)
-            }
-        })
+        return currentColorScheme == .dark ? Color.blue55 : Color.blue45
     }
     
     public static var blueHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.blue50)
-            default:
-                return UIColor(self.blue40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.blue50 : Color.blue40
     }
     
     // Red
     public static var redNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.red60)
-            default:
-                return UIColor(self.red50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.red60 : Color.red50
     }
     
     public static var redHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.red50)
-            default:
-                return UIColor(self.red40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.red50 : Color.red40
     }
     
     // Green
     public static var greenNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.green60)
-            default:
-                return UIColor(self.green50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.green60 : Color.green50
     }
     
     public static var greenHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.green50)
-            default:
-                return UIColor(self.green40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.green50 : Color.green40
     }
     
     // Orange
     public static var orangeNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.orange60)
-            default:
-                return UIColor(self.orange50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.orange60 : Color.orange50
     }
     
     public static var orangeHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.orange50)
-            default:
-                return UIColor(self.orange40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.orange50 : Color.orange40
     }
     
     // RedOrange
     public static var redOrangeNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.redOrange60)
-            default:
-                return UIColor(self.redOrange50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.redOrange60 : Color.redOrange50
     }
     
     public static var redOrangeHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.redOrange50)
-            default:
-                return UIColor(self.redOrange40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.redOrange50 : Color.redOrange40
     }
     
     // Lime
     public static var limeNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.lime60)
-            default:
-                return UIColor(self.lime50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.lime60 : Color.lime50
     }
     
     public static var limeHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.lime50)
-            default:
-                return UIColor(self.lime40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.lime50 : Color.lime40
     }
     
     // Cyan
     public static var cyanNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.cyan60)
-            default:
-                return UIColor(self.cyan50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.cyan60 : Color.cyan50
     }
     
     public static var cyanHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.cyan50)
-            default:
-                return UIColor(self.cyan40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.cyan50 : Color.cyan40
     }
     
     // LightBlue
     public static var lightBlueNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.lightBlue60)
-            default:
-                return UIColor(self.lightBlue50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.lightBlue60 : Color.lightBlue50
     }
     
     public static var lightBlueHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.lightBlue50)
-            default:
-                return UIColor(self.lightBlue40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.lightBlue50 : Color.lightBlue40
     }
     
     // Violet
     public static var violetNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.violet60)
-            default:
-                return UIColor(self.violet50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.violet60 : Color.violet50
     }
     
     public static var violetHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.violet50)
-            default:
-                return UIColor(self.violet40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.violet50 : Color.violet40
     }
     
     // Purple
     public static var purpleNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.purple60)
-            default:
-                return UIColor(self.purple50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.purple60 : Color.purple50
     }
     
     public static var purpleHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.purple50)
-            default:
-                return UIColor(self.purple40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.purple50 : Color.purple40
     }
     
     // Pink
     public static var pinkNormal: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.pink60)
-            default:
-                return UIColor(self.pink50)
-            }
-        })
+        return currentColorScheme == .dark ? Color.pink60 : Color.pink50
     }
     
     public static var pinkHeavy: Color {
-        return Color(UIColor { traitCollection in
-            switch traitCollection.userInterfaceStyle {
-            case .dark:
-                return UIColor(self.pink50)
-            default:
-                return UIColor(self.pink40)
-            }
-        })
+        return currentColorScheme == .dark ? Color.pink50 : Color.pink40
     }
 }

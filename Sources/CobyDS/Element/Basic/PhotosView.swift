@@ -9,10 +9,10 @@ import SwiftUI
 
 public struct PhotosView: View {
     
-    private let photos: [UIImage]
+    private let photos: [Image]
     
     public init(
-        photos: [UIImage]
+        photos: [Image]
     ) {
         self.photos = photos
     }
@@ -24,8 +24,8 @@ public struct PhotosView: View {
                 .edgesIgnoringSafeArea(.top)
         } else {
             TabView {
-                ForEach(self.photos, id: \.self) { photo in
-                    Image(uiImage: photo)
+                ForEach(0..<self.photos.count, id: \.self) { index in
+                    self.photos[index]
                         .resizable()
                         .scaledToFill()
                         .frame(width: BaseSize.screenWidth, height: BaseSize.screenWidth)
