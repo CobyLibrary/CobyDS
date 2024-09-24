@@ -78,6 +78,14 @@ public struct CBTextFieldView: View {
                     RoundedRectangle(cornerRadius: 10)
                         .strokeBorder(textFieldState.borderColor, lineWidth: textFieldState == .enabled ? 1 : 2)
                 )
+                
+                if textFieldState == .error {
+                    HStack(alignment: .top, spacing: 4) {
+                        Text(errorMessage)
+                            .font(.pretendard(size: 14, weight: .regular))
+                    }
+                    .foregroundColor(.redHeavy)
+                }
             }
         }
         
@@ -132,6 +140,9 @@ public struct CBTextFieldView: View {
                 text = String(text.prefix(maxLength))
             }
         }
+        .onChange(of: text) { _ in
+            self.textFieldState = .focused
+        }
         .focused($isTextFieldFocused)
         .onSubmit {
             isTextFieldFocused = false
@@ -184,12 +195,14 @@ public struct CBTextFieldView: View {
     VStack {
         CBTextFieldView(
             text: .constant("입력 중"),
+            textFieldState: .constant(.error),
             textFieldContentsType: .primary,
             textFieldTrailing: .none,
             textFieldSize: .large,
             isFilled: true,
             title: "입력",
-            placeholder: "입력해주세요"
+            placeholder: "입력해주세요",
+            errorMessage: "에러다"
         )
         
         CBTextFieldView(
