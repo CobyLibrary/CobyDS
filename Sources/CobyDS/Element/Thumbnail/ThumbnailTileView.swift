@@ -14,6 +14,7 @@ public struct ThumbnailTileView: View {
     private let title: String
     private let subTitle: String?
     private let description: String
+    private let subDescription: String?
     private let isSelectedBorderColor: Color
 
     public init(
@@ -22,6 +23,7 @@ public struct ThumbnailTileView: View {
         title: String,
         subTitle: String?,
         description: String,
+        subDescription: String?,
         isSelectedBorderColor: Color = Color.blueNormal
     ) {
         self.isSelected = isSelected
@@ -29,6 +31,7 @@ public struct ThumbnailTileView: View {
         self.title = title
         self.subTitle = subTitle
         self.description = description
+        self.subDescription = subDescription
         self.isSelectedBorderColor = isSelectedBorderColor
     }
     
@@ -40,7 +43,7 @@ public struct ThumbnailTileView: View {
             .aspectRatio(1.0, contentMode: .fit)
             .padding([.leading, .vertical], 12)
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 12) {
                 HStack {
                     Text(self.title)
                         .font(.pretendard(size: 16, weight: .medium))
@@ -54,21 +57,32 @@ public struct ThumbnailTileView: View {
                         Text(subTitle)
                             .font(.pretendard(size: 12, weight: .regular))
                             .foregroundColor(Color.labelAlternative)
-                            .minimumScaleFactor(1)
+                            .lineLimit(1)
                     }
                 }
                 
-                Text(self.description)
-                    .font(.pretendard(size: 14, weight: .regular))
-                    .foregroundColor(Color.labelNeutral)
-                    .lineLimit(2)
-                    .truncationMode(.tail)
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(self.description)
+                        .font(.pretendard(size: 14, weight: .regular))
+                        .foregroundColor(Color.labelNeutral)
+                        .lineLimit(2)
+                        .truncationMode(.tail)
+                    
+                    if let subDescription = self.subDescription {
+                        Text(subDescription)
+                            .font(.pretendard(size: 12, weight: .regular))
+                            .foregroundColor(Color.labelAlternative)
+                            .lineLimit(1)
+                            .truncationMode(.tail)
+                    }
+                }
                 
                 Spacer()
             }
             .padding([.vertical, .trailing], 16)
         }
         .frame(maxWidth: .infinity)
+        .frame(height: 120)
         .background(Color.backgroundNormalNormal)
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(
@@ -80,23 +94,24 @@ public struct ThumbnailTileView: View {
 
 
 #Preview {
-    VStack {
+    VStack(spacing: 20) {
         ThumbnailTileView(
             isSelected: true,
             image: nil,
             title: "title",
             subTitle: "date",
-            description: "description"
+            description: "description",
+            subDescription: "subDescription"
         )
-        .frame(width: BaseSize.fullWidth, height: 100)
         
         ThumbnailTileView(
             isSelected: false,
             image: nil,
             title: "title",
             subTitle: "date",
-            description: "description"
+            description: "description",
+            subDescription: "subDescription"
         )
-        .frame(width: BaseSize.fullWidth, height: 150)
     }
+    .padding(BaseSize.horizantalPadding)
 }
