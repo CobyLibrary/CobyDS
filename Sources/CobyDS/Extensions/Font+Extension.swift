@@ -13,13 +13,13 @@ public enum PretendardWeight: CaseIterable {
     public var fontName: String {
         switch self {
         case .regular:
-            return "Pretendard-Regular"
+            return "PretendardJP-Regular"
         case .medium:
-            return "Pretendard-Medium"
+            return "PretendardJP-Medium"
         case .semibold:
-            return "Pretendard-SemiBold"
+            return "PretendardJP-SemiBold"
         case .bold:
-            return "Pretendard-Bold"
+            return "PretendardJP-Bold"
         }
     }
 }
