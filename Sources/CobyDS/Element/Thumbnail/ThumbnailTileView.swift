@@ -65,14 +65,12 @@ public struct ThumbnailTileView: View {
                     Text(self.description)
                         .font(.pretendard(size: 14, weight: .regular))
                         .foregroundColor(Color.labelNeutral)
-                        .lineLimit(2)
                         .truncationMode(.tail)
                     
                     if let subDescription = self.subDescription {
                         Text(subDescription)
                             .font(.pretendard(size: 12, weight: .regular))
                             .foregroundColor(Color.labelAlternative)
-                            .lineLimit(1)
                             .truncationMode(.tail)
                     }
                 }
@@ -100,8 +98,8 @@ public struct ThumbnailTileView: View {
             image: nil,
             title: "title",
             subTitle: "date",
-            description: "description",
-            subDescription: "subDescription"
+            description: "descriptiondescriptiondescriptiondescriptiondescription",
+            subDescription: nil
         )
         
         ThumbnailTileView(
