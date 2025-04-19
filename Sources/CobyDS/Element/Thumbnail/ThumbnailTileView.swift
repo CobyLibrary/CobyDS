@@ -70,7 +70,7 @@ public struct ThumbnailTileView: View {
         }
         .frame(maxWidth: .infinity)
         .background(Color.backgroundNormalNormal)
-        .clipShape(.rect(cornerRadius: 12))
+        .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(
             RoundedRectangle(cornerRadius: 12)
                 .stroke(self.isSelected ? self.isSelectedBorderColor : Color.lineNormalNeutral, lineWidth: 1)

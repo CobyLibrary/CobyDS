@@ -42,21 +42,29 @@ public struct CBTextAreaView: View {
                 .frame(maxWidth: .infinity, minHeight: 32)
             }
             
-            TextField(text: $text, axis: .vertical) {
-                Text(placeholder)
-                    .font(.pretendard(size: 16.0, weight: .regular))
-                    .foregroundColor(Color.labelAssistive)
-            }
-            .lineLimit(8...)
-            .font(.pretendard(size: 16.0, weight: .regular))
-            .foregroundColor(Color.labelNormal)
-            .padding(12)
-            .cornerRadius(10)
-            .background(textFieldState.backgroudColor().cornerRadius(10))
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(textFieldState.borderColor, lineWidth: textFieldState == .enabled ? 1 : 2)
-            )
+            TextEditor(text: $text)
+                .font(.pretendard(size: 16.0, weight: .regular))
+                .foregroundColor(Color.labelNormal)
+                .frame(minHeight: 100)
+                .padding(12)
+                .cornerRadius(10)
+                .background(textFieldState.backgroudColor().cornerRadius(10))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .strokeBorder(textFieldState.borderColor, lineWidth: textFieldState == .enabled ? 1 : 2)
+                )
+                .overlay(
+                    Group {
+                        if text.isEmpty {
+                            Text(placeholder)
+                                .font(.pretendard(size: 16.0, weight: .regular))
+                                .foregroundColor(Color.labelAssistive)
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 12)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+                        }
+                    }
+                )
         }
     }
 }

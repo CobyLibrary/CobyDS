@@ -27,7 +27,7 @@ public struct RadioListItemWithColorView: View {
         HStack {
             HStack(spacing: 8) {
                 self.color
-                    .clipShape(.rect(cornerRadius: 8))
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                     .frame(width: 24, height: 24)
                 
                 Text(self.title)

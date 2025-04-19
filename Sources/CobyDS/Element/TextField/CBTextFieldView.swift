@@ -96,39 +96,29 @@ public struct CBTextFieldView: View {
         Group {
             switch textFieldContentsType {
             case .primary:
-                TextField(text: $text) {
-                    Text(placeholder)
-                        .font(.pretendard(size: 16.0, weight: .regular))
-                        .foregroundColor(Color.labelAssistive)
-                }
+                TextField(placeholder, text: $text)
+                    .font(.pretendard(size: 16.0, weight: .regular))
+                    .foregroundColor(Color.labelAssistive)
             case .secure:
                 if isSecure {
-                    SecureField(text: $text) {
-                        Text(placeholder)
-                            .font(.pretendard(size: 16.0, weight: .regular))
-                            .foregroundColor(Color.labelAssistive)
-                    }
+                    SecureField(placeholder, text: $text)
+                        .font(.pretendard(size: 16.0, weight: .regular))
+                        .foregroundColor(Color.labelAssistive)
                 } else {
-                    TextField(text: $text) {
-                        Text(placeholder)
-                            .font(.pretendard(size: 16.0, weight: .regular))
-                            .foregroundColor(Color.labelAssistive)
-                    }
+                    TextField(placeholder, text: $text)
+                        .font(.pretendard(size: 16.0, weight: .regular))
+                        .foregroundColor(Color.labelAssistive)
                 }
             case .number:
-                TextField(text: $text) {
-                    Text(placeholder)
-                        .font(.pretendard(size: 16.0, weight: .regular))
-                        .foregroundColor(Color.labelAssistive)
-                }
-                .keyboardType(.numberPad)
+                TextField(placeholder, text: $text)
+                    .font(.pretendard(size: 16.0, weight: .regular))
+                    .foregroundColor(Color.labelAssistive)
+                    .keyboardType(.numberPad)
             case .secureNumber:
-                SecureField(text: $text) {
-                    Text(placeholder)
-                        .font(.pretendard(size: 16.0, weight: .regular))
-                        .foregroundColor(Color.labelAssistive)
-                }
-                .keyboardType(.numberPad)
+                SecureField(placeholder, text: $text)
+                    .font(.pretendard(size: 16.0, weight: .regular))
+                    .foregroundColor(Color.labelAssistive)
+                    .keyboardType(.numberPad)
             }
         }
         .font(.pretendard(size: 16.0, weight: .regular))

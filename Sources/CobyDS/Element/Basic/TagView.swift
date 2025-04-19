@@ -33,7 +33,7 @@ public struct TagView: View {
             .padding(.horizontal, 12)
             .padding(.vertical, 8)
             .background(self.isSelected ? self.tagColor : Color.backgroundNormalNormal)
-            .clipShape(.rect(cornerRadius: 8))
+            .clipShape(RoundedRectangle(cornerRadius: 8))
             .overlay(
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(Color.lineNormalNeutral, lineWidth: 1)
