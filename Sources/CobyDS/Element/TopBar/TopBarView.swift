@@ -213,5 +213,4 @@ public struct TopBarView: View {
         )
     }
     .background(Color.red30)
-    .loadCustomFonts()
 }

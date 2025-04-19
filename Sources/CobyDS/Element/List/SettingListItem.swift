@@ -52,5 +52,4 @@ public struct SettingListItem: View {
         }
     }
     .padding(.horizontal, BaseSize.horizantalPadding)
-    .loadCustomFonts()
 }

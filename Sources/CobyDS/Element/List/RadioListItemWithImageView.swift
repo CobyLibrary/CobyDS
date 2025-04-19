@@ -61,5 +61,4 @@ public struct RadioListItemWithImageView: View {
         )
     }
     .padding(.horizontal, BaseSize.horizantalPadding)
-    .loadCustomFonts()
 }

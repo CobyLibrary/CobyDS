@@ -51,5 +51,4 @@ public struct RadioListItemView: View {
         )
     }
     .padding(.horizontal, BaseSize.horizantalPadding)
-    .loadCustomFonts()
 }

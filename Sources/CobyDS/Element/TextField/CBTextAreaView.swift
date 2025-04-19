@@ -75,5 +75,4 @@ public struct CBTextAreaView: View {
             placeholder: "입력해주세요"
         )
     }
-    .loadCustomFonts()
 }

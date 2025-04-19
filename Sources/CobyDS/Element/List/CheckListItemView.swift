@@ -56,5 +56,4 @@ public struct CheckListItemView: View {
         )
     }
     .padding(.horizontal, BaseSize.horizantalPadding)
-    .loadCustomFonts()
 }

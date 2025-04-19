@@ -74,5 +74,4 @@ public struct ThumbnailTitleView: View {
         )
         .frame(width: 150)
     }
-    .loadCustomFonts()
 }

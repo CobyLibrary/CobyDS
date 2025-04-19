@@ -232,5 +232,4 @@ public struct CBTextFieldView: View {
             maxLength: 10
         )
     }
-    .loadCustomFonts()
 }

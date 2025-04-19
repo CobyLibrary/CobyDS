@@ -88,5 +88,4 @@ public struct ThumbnailCardView: View {
         )
         .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
     }
-    .loadCustomFonts()
 }

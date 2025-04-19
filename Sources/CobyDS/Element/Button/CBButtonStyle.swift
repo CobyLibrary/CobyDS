@@ -174,5 +174,4 @@ public struct CBButtonStyle: ButtonStyle {
         Spacer()
     }
     .background(Color.backgroundNormalNormal)
-    .loadCustomFonts()
 }

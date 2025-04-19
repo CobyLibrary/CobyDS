@@ -24,18 +24,6 @@ public enum PretendardWeight: CaseIterable {
     }
 }
 
-extension Font {
-    public static func pretendard(size: CGFloat, weight: PretendardWeight = .regular) -> Font {
-        return .custom(weight.fontName, size: size)
-    }
-}
-
-extension Font {
-    public static func pretendardFixedSize(size: CGFloat, weight: PretendardWeight = .regular) -> Font {
-        return .custom(weight.fontName, fixedSize: size)
-    }
-}
-
 public struct Fonts {
     public static func registerCustomFonts() {
         PretendardWeight.allCases.forEach { font in
@@ -45,9 +33,19 @@ public struct Fonts {
     }
 }
 
-public extension View {
-    func loadCustomFonts() -> some View {
+// Register fonts automatically when the app starts
+extension Font {
+    private static let registerFonts: Void = {
         Fonts.registerCustomFonts()
-        return self
+    }()
+    
+    public static func pretendard(size: CGFloat, weight: PretendardWeight = .regular) -> Font {
+        _ = registerFonts
+        return .custom(weight.fontName, size: size)
+    }
+    
+    public static func pretendardFixedSize(size: CGFloat, weight: PretendardWeight = .regular) -> Font {
+        _ = registerFonts
+        return .custom(weight.fontName, fixedSize: size)
     }
 }
