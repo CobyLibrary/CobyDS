@@ -9,18 +9,18 @@ import SwiftUI
 
 public struct ThumbnailTitleView: View {
     
-    private let image: UIImage?
+    @Binding private var image: UIImage?
     private let title: String
     private let description: String?
     private let isShadowing: Bool
     
     public init(
-        image: UIImage? = nil,
+        image: Binding<UIImage?>,
         title: String,
         description: String? = nil,
         isShadowing: Bool = false
     ) {
-        self.image = image
+        self._image = image
         self.title = title
         self.description = description
         self.isShadowing = isShadowing
@@ -29,7 +29,7 @@ public struct ThumbnailTitleView: View {
     public var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ThumbnailView(
-                image: self.image,
+                image: self.$image,
                 isShadowing: self.isShadowing
             )
             .aspectRatio(1.0, contentMode: .fit)
@@ -56,7 +56,7 @@ public struct ThumbnailTitleView: View {
 #Preview {
     VStack(spacing: 20) {
         ThumbnailTitleView(
-            image: UIImage.icImage,
+            image: .constant(UIImage.icImage),
             title: "제목입니다만",
             description: "사진에 대한 설명이에요",
             isShadowing: true
@@ -64,11 +64,13 @@ public struct ThumbnailTitleView: View {
         .frame(width: 150)
         
         ThumbnailTitleView(
+            image: .constant(nil),
             title: "제목입니다만"
         )
         .frame(width: 150)
         
         ThumbnailTitleView(
+            image: .constant(nil),
             title: "제목입니다만",
             description: "설명잉에요"
         )

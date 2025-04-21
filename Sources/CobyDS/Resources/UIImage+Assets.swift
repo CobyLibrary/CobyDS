@@ -33,6 +33,7 @@ extension UIImage {
     public static let icCamera = UIImage(name: "camera")!
     public static let icMore = UIImage(name: "more")!
     public static let icPlus = UIImage(name: "plus")!
+    public static let icFilter = UIImage(name: "filter")!
 }
 
 public extension UIImage {

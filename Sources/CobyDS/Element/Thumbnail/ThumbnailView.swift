@@ -9,14 +9,14 @@ import SwiftUI
 
 public struct ThumbnailView: View {
     
-    private let image: UIImage?
+    @Binding private var image: UIImage?
     private let isShadowing: Bool
     
     public init(
-        image: UIImage? = nil,
+        image: Binding<UIImage?>,
         isShadowing: Bool = false
     ) {
-        self.image = image
+        self._image = image
         self.isShadowing = isShadowing
     }
     
@@ -50,19 +50,19 @@ public struct ThumbnailView: View {
 #Preview {
     VStack {
         ThumbnailView(
-            image: UIImage.icImage,
+            image: .constant(UIImage.icImage),
             isShadowing: true
         )
         .frame(width: 100, height: 100)
         
         ThumbnailView(
-            image: UIImage.icImage,
+            image: .constant(UIImage.icImage),
             isShadowing: true
         )
         .frame(width: 200, height: 150)
         
         ThumbnailView(
-            image: UIImage.icImage,
+            image: .constant(UIImage.icImage),
             isShadowing: true
         )
         .frame(width: 300, height: 150)

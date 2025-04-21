@@ -9,23 +9,23 @@ import SwiftUI
 
 public struct ThumbnailWithCloseButtonView: View {
     
-    private let image: UIImage?
+    @Binding private var image: UIImage?
     private let isShadowing: Bool
     private let closeAction: () -> Void
     
     public init(
-        image: UIImage?,
+        image: Binding<UIImage?>,
         isShadowing: Bool = false,
         closeAction: @escaping () -> Void
     ) {
-        self.image = image
+        self._image = image
         self.isShadowing = isShadowing
         self.closeAction = closeAction
     }
     
     public var body: some View {
         ThumbnailView(
-            image: self.image,
+            image: self.$image,
             isShadowing: self.isShadowing
         )
         .overlay(
@@ -50,7 +50,7 @@ public struct ThumbnailWithCloseButtonView: View {
 
 #Preview {
     ThumbnailWithCloseButtonView(
-        image: UIImage.icImage,
+        image: .constant(UIImage.icImage),
         isShadowing: true,
         closeAction: {
             print("close")

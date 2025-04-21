@@ -10,7 +10,7 @@ import SwiftUI
 public struct ThumbnailTileView: View {
     
     private let isSelected: Bool
-    private let image: UIImage?
+    @Binding private var image: UIImage?
     private let title: String
     private let subTitle: String?
     private let description: String
@@ -19,7 +19,7 @@ public struct ThumbnailTileView: View {
 
     public init(
         isSelected: Bool = false,
-        image: UIImage?,
+        image: Binding<UIImage?>,
         title: String,
         subTitle: String?,
         description: String,
@@ -27,7 +27,7 @@ public struct ThumbnailTileView: View {
         isSelectedBorderColor: Color = Color.blueNormal
     ) {
         self.isSelected = isSelected
-        self.image = image
+        self._image = image
         self.title = title
         self.subTitle = subTitle
         self.description = description
@@ -38,7 +38,7 @@ public struct ThumbnailTileView: View {
     public var body: some View {
         HStack(spacing: 16) {
             ThumbnailView(
-                image: self.image
+                image: self.$image
             )
             .aspectRatio(1.0, contentMode: .fit)
             .padding([.leading, .vertical], 12)
@@ -95,16 +95,16 @@ public struct ThumbnailTileView: View {
     VStack(spacing: 20) {
         ThumbnailTileView(
             isSelected: true,
-            image: nil,
+            image: .constant(nil),
             title: "title",
             subTitle: "date",
-            description: "descriptiondescriptiondescriptiondescriptiondescription",
+            description: "descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription",
             subDescription: nil
         )
         
         ThumbnailTileView(
             isSelected: false,
-            image: nil,
+            image: .constant(nil),
             title: "title",
             subTitle: "date",
             description: "description",

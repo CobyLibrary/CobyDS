@@ -9,18 +9,18 @@ import SwiftUI
 
 public struct ThumbnailCardView: View {
     
-    private let image: UIImage?
+    @Binding private var image: UIImage?
     private let title: String
     private let description: String
     private let isShadowing: Bool
     
     public init(
-        image: UIImage? = nil,
+        image: Binding<UIImage?>,
         title: String,
         description: String,
         isShadowing: Bool = false
     ) {
-        self.image = image
+        self._image = image
         self.title = title
         self.description = description
         self.isShadowing = isShadowing
@@ -28,7 +28,7 @@ public struct ThumbnailCardView: View {
     
     public var body: some View {
         ZStack(alignment: .bottomLeading) {
-            ThumbnailView(image: self.image)
+            ThumbnailView(image: self.$image)
                 .clipShape(RoundedRectangle(cornerRadius: 12))
             
             LinearGradient(
@@ -74,7 +74,7 @@ public struct ThumbnailCardView: View {
 #Preview {
     VStack {
         ThumbnailCardView(
-            image: UIImage.icImage,
+            image: .constant(UIImage.icImage),
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다",
             isShadowing: true
@@ -82,7 +82,7 @@ public struct ThumbnailCardView: View {
         .frame(width: BaseSize.fullWidth, height: BaseSize.fullWidth*0.8)
         
         ThumbnailCardView(
-            image: UIImage.icImage,
+            image: .constant(UIImage.icImage),
             title: "전주에서",
             description: "철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다철길입니다"
         )

@@ -10,23 +10,23 @@ import SwiftUI
 public struct RadioListItemWithImageView: View {
     
     private let isChecked: Bool
-    private let image: UIImage
+    @Binding private var image: UIImage?
     private let title: String
     
     public init(
         isChecked: Bool,
-        image: UIImage,
+        image: Binding<UIImage?>,
         title: String
     ) {
         self.isChecked = isChecked
-        self.image = image
+        self._image = image
         self.title = title
     }
     
     public var body: some View {
         HStack {
             HStack(spacing: 8) {
-                ThumbnailView(image: self.image)
+                ThumbnailView(image: self.$image)
                     .frame(width: 40, height: 40)
                 
                 Text(self.title)
@@ -50,13 +50,13 @@ public struct RadioListItemWithImageView: View {
     VStack(spacing: 0) {
         RadioListItemWithImageView(
             isChecked: true,
-            image: UIImage.icCamera,
+            image: .constant(UIImage.icCamera),
             title: "제목"
         )
         
         RadioListItemWithImageView(
             isChecked: false,
-            image: UIImage.icCamera,
+            image: .constant(UIImage.icCamera),
             title: "제목"
         )
     }
