@@ -34,6 +34,10 @@ extension UIImage {
     public static let icMore = UIImage(name: "more")!
     public static let icPlus = UIImage(name: "plus")!
     public static let icFilter = UIImage(name: "filter")!
+    public static let icRefresh = UIImage(name: "refresh")!
+    public static let icSetting = UIImage(name: "setting")!
+    public static let icDelete = UIImage(name: "delete")!
+    public static let icStar = UIImage(name: "star")!
 }
 
 public extension UIImage {
